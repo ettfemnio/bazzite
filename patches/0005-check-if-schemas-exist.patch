@@ -1,0 +1,67 @@
+From 8e543713d24b9c1f1b487e314d9fc90eb67c6c63 Mon Sep 17 00:00:00 2001
+From: Preston Petrie <ppetrie@nyb.com>
+Date: Fri, 9 May 2025 12:36:45 -0500
+Subject: [PATCH 5/5] check if schemas exist
+
+I don't know why this patch is necessary or if it still is, but things broke without it.
+---
+ Containerfile | 22 +++++++++++++++-------
+ 1 file changed, 15 insertions(+), 7 deletions(-)
+
+diff --git a/Containerfile b/Containerfile
+index c21d1094..ba86496a 100644
+--- a/Containerfile
++++ b/Containerfile
+@@ -554,10 +554,12 @@ RUN --mount=type=cache,dst=/var/cache \
+     if grep -q "kinoite" <<< "${BASE_IMAGE_NAME}"; then \
+       systemctl enable usr-share-sddm-themes.mount && \
+       mkdir -p "/usr/share/ublue-os/dconfs/desktop-kinoite/" && \
+-      cp "/usr/share/glib-2.0/schemas/zz0-"*"-bazzite-desktop-kinoite-"*".gschema.override" "/usr/share/ublue-os/dconfs/desktop-kinoite/" && \
+-      find "/etc/dconf/db/distro.d/" -maxdepth 1 -type f -exec cp {} "/usr/share/ublue-os/dconfs/desktop-kinoite/" \; && \
+-      dconf-override-converter to-dconf "/usr/share/ublue-os/dconfs/desktop-kinoite/zz0-"*"-bazzite-desktop-kinoite-"*".gschema.override" && \
+-      rm "/usr/share/ublue-os/dconfs/desktop-kinoite/zz0-"*"-bazzite-desktop-kinoite-"*".gschema.override" \
++      if compgen -G "/usr/share/glib-2.0/schemas/zz0-"*"-bazzite-desktop-kinoite-"*".gschema.override" > /dev/null; then \
++        cp "/usr/share/glib-2.0/schemas/zz0-"*"-bazzite-desktop-kinoite-"*".gschema.override" "/usr/share/ublue-os/dconfs/desktop-kinoite/" && \
++        find "/etc/dconf/db/distro.d/" -maxdepth 1 -type f -exec cp {} "/usr/share/ublue-os/dconfs/desktop-kinoite/" \; && \
++        dconf-override-converter to-dconf "/usr/share/ublue-os/dconfs/desktop-kinoite/zz0-"*"-bazzite-desktop-kinoite-"*".gschema.override" && \
++        rm "/usr/share/ublue-os/dconfs/desktop-kinoite/zz0-"*"-bazzite-desktop-kinoite-"*".gschema.override" \
++      ; fi \
+     ; else \
+       mkdir -p "/usr/share/ublue-os/dconfs/desktop-silverblue/" && \
+       cp "/usr/share/glib-2.0/schemas/zz0-"*"-bazzite-desktop-silverblue-"*".gschema.override" "/usr/share/ublue-os/dconfs/desktop-silverblue/" && \
+@@ -568,7 +570,9 @@ RUN --mount=type=cache,dst=/var/cache \
+     ; fi && \
+     mkdir -p /tmp/bazzite-schema-test && \
+     find "/usr/share/glib-2.0/schemas/" -type f ! -name "*.gschema.override" -exec cp {} "/tmp/bazzite-schema-test/" \; && \
+-    cp "/usr/share/glib-2.0/schemas/zz0-"*".gschema.override" "/tmp/bazzite-schema-test/" && \
++    if compgen -G "/usr/share/glib-2.0/schemas/zz0-"*".gschema.override" > /dev/null; then \
++      cp "/usr/share/glib-2.0/schemas/zz0-"*".gschema.override" "/tmp/bazzite-schema-test/" \
++    ; fi && \
+     glib-compile-schemas --strict /tmp/bazzite-schema-test && \
+     glib-compile-schemas /usr/share/glib-2.0/schemas &>/dev/null && \
+     rm -r /tmp/bazzite-schema-test && \
+@@ -817,7 +821,9 @@ RUN --mount=type=cache,dst=/var/cache \
+     ; fi && \
+     mkdir -p /tmp/bazzite-schema-test && \
+     find "/usr/share/glib-2.0/schemas/" -type f ! -name "*.gschema.override" -exec cp {} "/tmp/bazzite-schema-test/" \; && \
+-    cp "/usr/share/glib-2.0/schemas/zz0-"*".gschema.override" "/tmp/bazzite-schema-test/" && \
++    if compgen -G "/usr/share/glib-2.0/schemas/zz0-"*".gschema.override" > /dev/null; then \
++      cp "/usr/share/glib-2.0/schemas/zz0-"*".gschema.override" "/tmp/bazzite-schema-test/" \
++    ; fi && \
+     glib-compile-schemas --strict /tmp/bazzite-schema-test && \
+     glib-compile-schemas /usr/share/glib-2.0/schemas &>/dev/null && \
+     rm -r /tmp/bazzite-schema-test && \
+@@ -920,7 +926,9 @@ RUN --mount=type=cache,dst=/var/cache \
+     ; fi && \
+     mkdir -p /tmp/bazzite-schema-test && \
+     find "/usr/share/glib-2.0/schemas/" -type f ! -name "*.gschema.override" -exec cp {} "/tmp/bazzite-schema-test/" \; && \
+-    cp "/usr/share/glib-2.0/schemas/zz0-"*".gschema.override" "/tmp/bazzite-schema-test/" && \
++    if compgen -G "/usr/share/glib-2.0/schemas/zz0-"*".gschema.override" > /dev/null; then \
++      cp "/usr/share/glib-2.0/schemas/zz0-"*".gschema.override" "/tmp/bazzite-schema-test/" \
++    ; fi && \
+     glib-compile-schemas --strict /tmp/bazzite-schema-test && \
+     glib-compile-schemas /usr/share/glib-2.0/schemas &>/dev/null && \
+     rm -r /tmp/bazzite-schema-test && \
+-- 
+2.49.0.windows.1
+

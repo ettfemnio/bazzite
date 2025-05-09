@@ -1,0 +1,23 @@
+From 23db8e17ec605e90694dde0b453ca5df98ed2897 Mon Sep 17 00:00:00 2001
+From: Preston Petrie <ppetrie@nyb.com>
+Date: Fri, 9 May 2025 12:34:34 -0500
+Subject: [PATCH 4/5] replace public key
+
+---
+ cosign.pub | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cosign.pub b/cosign.pub
+index bd5b1927..acd2449e 100644
+--- a/cosign.pub
++++ b/cosign.pub
+@@ -1,4 +1,4 @@
+ -----BEGIN PUBLIC KEY-----
+-MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHLRpBfPRYiMl9wb7s6fx47PzzNWu
+-3zyJgXhWEvxoOgwv9CpwjbvUwR9qHxNMWkJhuGE6cjDA2hpy1I6NbA+24Q==
++MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEaQ5FR+X/WoJJj9YSlFn25ao8dBIu
++X84KDtGWLVyULe0JwsHQE7CYSDhwlzouM/Wq8GbN3ftnoMzWYpszrxBbwA==
+ -----END PUBLIC KEY-----
+-- 
+2.49.0.windows.1
+

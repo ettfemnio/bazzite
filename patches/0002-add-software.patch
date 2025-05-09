@@ -1,0 +1,82 @@
+From 17e4e6a4a4936c2fd3f9c4422c211946d760f6e6 Mon Sep 17 00:00:00 2001
+From: Preston Petrie <ppetrie@nyb.com>
+Date: Fri, 9 May 2025 12:33:48 -0500
+Subject: [PATCH 2/5] add software
+
+---
+ Containerfile        | 11 ++++++++++-
+ build_files/build.sh | 33 +++++++++++++++++++++++++++++++++
+ 2 files changed, 43 insertions(+), 1 deletion(-)
+ create mode 100644 build_files/build.sh
+
+diff --git a/Containerfile b/Containerfile
+index bd8d3cda..94f2d92f 100644
+--- a/Containerfile
++++ b/Containerfile
+@@ -390,6 +390,15 @@ RUN --mount=type=cache,dst=/var/cache \
+     chmod +x /usr/bin/winetricks && \
+     /ctx/cleanup
+ 
++# my packages
++RUN --mount=type=cache,dst=/var/cache \
++    --mount=type=cache,dst=/var/log \
++    --mount=type=bind,from=ctx,source=/,target=/ctx \
++    --mount=type=tmpfs,dst=/tmp \
++    mkdir -p /var/lib/alternatives && \
++    /ctx/build.sh && \
++    /ctx/cleanup
++
+ # Configure KDE & GNOME
+ RUN --mount=type=cache,dst=/var/cache \
+     --mount=type=cache,dst=/var/log \
+@@ -425,7 +434,7 @@ RUN --mount=type=cache,dst=/var/cache \
+             plasma-welcome-fedora \
+             plasma-browser-integration \
+             kcharselect \
+-            konsole && \
++            && \
+         sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:org.gnome.Ptyxis.desktop,applications:org.kde.discover.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
+         sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,net.lutris.Lutris.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.gnome.Ptyxis.desktop,org.kde.discover.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml && \
+         sed -i 's@\[Desktop Action new-window\]@\[Desktop Action new-window\]\nX-KDE-Shortcuts=Ctrl+Alt+T@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
+diff --git a/build_files/build.sh b/build_files/build.sh
+new file mode 100644
+index 00000000..4b323d89
+--- /dev/null
++++ b/build_files/build.sh
+@@ -0,0 +1,33 @@
++#!/bin/bash
++set -euxo pipefail
++
++# install VirtualBox using script from bazzite-virtualbox
++curl -L -o "/tmp/vbox.sh" "https://raw.githubusercontent.com/Preston159/bazzite-virtualbox/refs/heads/testing/build.sh"
++chmod +x /tmp/vbox.sh
++/tmp/vbox.sh
++
++# install hyprland
++dnf -y copr enable solopasha/hyprland
++dnf install -y hyprland
++dnf install -y hyprland-qtutils
++dnf install -y hyprlock
++dnf install -y hyprland-uwsm
++dnf install -y hyprpolkitagent
++dnf install -y xdg-desktop-portal-hyprland
++dnf install -y rofi
++dnf install -y pavucontrol
++dnf install -y waybar
++dnf install --setopt=install_weak_deps=false -y waypaper
++
++# install development tools
++curl -L -o /tmp/vscode-x64.rpm 'https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64'
++dnf install -y /tmp/vscode-x64.rpm
++dnf install -y docker-cli
++dnf install -y kate
++
++# install cli tools
++dnf install -y zsh
++dnf install -y zoxide
++
++# misc
++dnf install -y waypipe
+-- 
+2.49.0.windows.1
+
