@@ -1,0 +1,154 @@
+From 55419d26d962d008b7c8ce95b35fd2ecc6274e8f Mon Sep 17 00:00:00 2001
+From: Preston Petrie <preston159@users.noreply.github.com>
+Date: Fri, 9 May 2025 14:31:45 -0500
+Subject: [PATCH 3/5] remove software
+
+---
+ Containerfile                                 | 11 ++-----
+ .../desktop/kinoite/usr/bin/kde-prompt        |  1 -
+ .../desktop/kinoite/usr/bin/kde-ptyxis        | 11 -------
+ .../applications/org.gnome.Prompt.desktop     | 29 -------------------
+ ...te-desktop-kinoite-global.gschema.override | 12 --------
+ .../share/ublue-os/bazzite/flatpak/install    | 18 ------------
+ 6 files changed, 3 insertions(+), 79 deletions(-)
+ delete mode 120000 system_files/desktop/kinoite/usr/bin/kde-prompt
+ delete mode 100755 system_files/desktop/kinoite/usr/bin/kde-ptyxis
+ delete mode 100644 system_files/desktop/kinoite/usr/share/applications/org.gnome.Prompt.desktop
+ delete mode 100644 system_files/desktop/kinoite/usr/share/glib-2.0/schemas/zz0-00-bazzite-desktop-kinoite-global.gschema.override
+ delete mode 100644 system_files/desktop/kinoite/usr/share/ublue-os/bazzite/flatpak/install
+
+diff --git a/Containerfile b/Containerfile
+index 94f2d92f..c21d1094 100644
+--- a/Containerfile
++++ b/Containerfile
+@@ -417,7 +417,7 @@ RUN --mount=type=cache,dst=/var/cache \
+             fcitx5-chinese-addons \
+             fcitx5-hangul \
+             kcm-fcitx5 \
+-            ptyxis && \
++            && \
+         dnf5 -y swap \
+         --repo=terra-extras \
+             kf6-kio kf6-kio && \
+@@ -435,14 +435,9 @@ RUN --mount=type=cache,dst=/var/cache \
+             plasma-browser-integration \
+             kcharselect \
+             && \
+-        sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:org.gnome.Ptyxis.desktop,applications:org.kde.discover.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
+-        sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,net.lutris.Lutris.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.gnome.Ptyxis.desktop,org.kde.discover.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml && \
+-        sed -i 's@\[Desktop Action new-window\]@\[Desktop Action new-window\]\nX-KDE-Shortcuts=Ctrl+Alt+T@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
+-        sed -i '/^Comment/d' /usr/share/applications/org.gnome.Ptyxis.desktop && \
+-        sed -i 's@Exec=ptyxis@Exec=kde-ptyxis@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
+-        sed -i 's@Keywords=@Keywords=konsole;console;@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
++        sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:org.kde.discover.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
++        sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,net.lutris.Lutris.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.kde.discover.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml && \
+         sed -i 's/^Exec=plasma-discover/& --backends flatpak-backend/' /usr/share/applications/org.kde.discover.desktop && \
+-        cp /usr/share/applications/org.gnome.Ptyxis.desktop /usr/share/kglobalaccel/org.gnome.Ptyxis.desktop && \
+         setcap 'cap_net_raw+ep' /usr/libexec/ksysguard/ksgrd_network_helper \
+     ; else \
+         dnf5 -y swap \
+diff --git a/system_files/desktop/kinoite/usr/bin/kde-prompt b/system_files/desktop/kinoite/usr/bin/kde-prompt
+deleted file mode 120000
+index d1546e48..00000000
+--- a/system_files/desktop/kinoite/usr/bin/kde-prompt
++++ /dev/null
+@@ -1 +0,0 @@
+-/usr/bin/kde-ptyxis
+\ No newline at end of file
+diff --git a/system_files/desktop/kinoite/usr/bin/kde-ptyxis b/system_files/desktop/kinoite/usr/bin/kde-ptyxis
+deleted file mode 100755
+index 76408ed2..00000000
+--- a/system_files/desktop/kinoite/usr/bin/kde-ptyxis
++++ /dev/null
+@@ -1,11 +0,0 @@
+-#!/usr/bin/bash
+-# Shim to handle KDE only supporting -e
+-# https://bugs.kde.org/show_bug.cgi?id=459616
+-args=("${@//-e/--}")
+- 
+-# Dolphin integration requires --new-window to function properly
+-if [[ ! "${args[@]}" =~ "--" && ! "${args[@]}" =~ "-h" && ! "${args[@]}" =~ "-x" ]]; then
+-        /usr/bin/ptyxis --new-window "${args[@]}"
+-else
+-        /usr/bin/ptyxis "${args[@]}"
+-fi
+diff --git a/system_files/desktop/kinoite/usr/share/applications/org.gnome.Prompt.desktop b/system_files/desktop/kinoite/usr/share/applications/org.gnome.Prompt.desktop
+deleted file mode 100644
+index fb624a34..00000000
+--- a/system_files/desktop/kinoite/usr/share/applications/org.gnome.Prompt.desktop
++++ /dev/null
+@@ -1,29 +0,0 @@
+-[Desktop Entry]
+-NoDisplay=true
+-Name=Terminal
+-Comment=A container-oriented terminal for GNOME
+-Exec=kde-ptyxis
+-# Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+-Icon=org.gnome.Ptyxis
+-DBusActivatable=true
+-StartupNotify=true
+-Terminal=false
+-Type=Application
+-Categories=GNOME;GTK;System;TerminalEmulator;
+-# Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+-Keywords=terminal;prompt;ptyxis;shell;command;commandline;cmd;cli;
+-Actions=new-window;new-tab;preferences;
+-X-ExecArg=--
+-X-KDE-AuthorizeAction=shell_access
+-
+-[Desktop Action new-window]
+-Name=New Window
+-Exec=ptyxis --new-window
+-
+-[Desktop Action new-tab]
+-Name=New Tab
+-Exec=ptyxis --tab
+-
+-[Desktop Action preferences]
+-Name=Preferences
+-Exec=ptyxis --preferences
+diff --git a/system_files/desktop/kinoite/usr/share/glib-2.0/schemas/zz0-00-bazzite-desktop-kinoite-global.gschema.override b/system_files/desktop/kinoite/usr/share/glib-2.0/schemas/zz0-00-bazzite-desktop-kinoite-global.gschema.override
+deleted file mode 100644
+index 04919260..00000000
+--- a/system_files/desktop/kinoite/usr/share/glib-2.0/schemas/zz0-00-bazzite-desktop-kinoite-global.gschema.override
++++ /dev/null
+@@ -1,12 +0,0 @@
+-#-------------- REMAINING SCHEMAS IN THIS SETTING SECTION ARE LOCATED IN DCONF --------------#
+-# Settings bellow are supported with gschema override, but other settings, which are relocatable schemas, are not. Edit dconfs if you need to modify relocatable schemas.
+-
+-# Ptyxis color palette & opacity is recognized as a relocatable schema
+-[org.gnome.Ptyxis]
+-restore-session=false
+-restore-window-size=false
+-audible-bell=false
+-default-columns=uint32 111
+-default-rows=uint32 25
+-profile-uuids=['2871e8027773ae74d6c87a5f659bbc74']
+-default-profile-uuid='2871e8027773ae74d6c87a5f659bbc74'
+diff --git a/system_files/desktop/kinoite/usr/share/ublue-os/bazzite/flatpak/install b/system_files/desktop/kinoite/usr/share/ublue-os/bazzite/flatpak/install
+deleted file mode 100644
+index 665b2597..00000000
+--- a/system_files/desktop/kinoite/usr/share/ublue-os/bazzite/flatpak/install
++++ /dev/null
+@@ -1,18 +0,0 @@
+-org.mozilla.firefox
+-org.kde.gwenview
+-org.kde.okular
+-org.kde.kcalc
+-org.kde.haruna
+-org.kde.filelight
+-io.github.fastrizwaan.WineZGUI
+-com.ranfdev.DistroShelf
+-it.mijorus.gearlever
+-com.github.tchx84.Flatseal
+-io.github.flattool.Warehouse
+-net.davidotek.pupgui2
+-org.freedesktop.Platform.VulkanLayer.MangoHud//23.08
+-org.freedesktop.Platform.VulkanLayer.vkBasalt//23.08
+-org.freedesktop.Platform.VulkanLayer.OBSVkCapture//23.08
+-com.obsproject.Studio.Plugin.OBSVkCapture
+-com.obsproject.Studio.Plugin.Gstreamer
+-com.obsproject.Studio.Plugin.GStreamerVaapi
+-- 
+2.49.0.windows.1
+
