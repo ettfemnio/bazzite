@@ -1,4 +1,4 @@
-From 55419d26d962d008b7c8ce95b35fd2ecc6274e8f Mon Sep 17 00:00:00 2001
+From 434ac56ee87bdeb448c492a1c782805e713d0193 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Fri, 9 May 2025 14:31:45 -0500
 Subject: [PATCH 3/5] remove software
@@ -18,10 +18,10 @@ Subject: [PATCH 3/5] remove software
  delete mode 100644 system_files/desktop/kinoite/usr/share/ublue-os/bazzite/flatpak/install
 
 diff --git a/Containerfile b/Containerfile
-index 94f2d92f..c21d1094 100644
+index d380bd83..3f487353 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -417,7 +417,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -415,7 +415,7 @@ RUN --mount=type=cache,dst=/var/cache \
              fcitx5-chinese-addons \
              fcitx5-hangul \
              kcm-fcitx5 \
@@ -30,7 +30,7 @@ index 94f2d92f..c21d1094 100644
          dnf5 -y swap \
          --repo=terra-extras \
              kf6-kio kf6-kio && \
-@@ -435,14 +435,9 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -433,14 +433,9 @@ RUN --mount=type=cache,dst=/var/cache \
              plasma-browser-integration \
              kcharselect \
              && \
