@@ -1,7 +1,7 @@
-From fb0b5b6c2d6e206556aa152fdb51b7f3444b4ddb Mon Sep 17 00:00:00 2001
+From 0eca7154c6b0b2322dd968c3801f7dd27257743f Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Fri, 9 May 2025 14:31:42 -0500
-Subject: [PATCH 2/6] add software
+Subject: [PATCH 2/5] add software
 
 ---
  Containerfile        | 11 ++++++++++-
@@ -82,5 +82,5 @@ index 00000000..86227335
 +    wayvnc \
 +    lact
 -- 
-2.49.0
+2.49.0.windows.1
 

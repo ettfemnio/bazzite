@@ -1,7 +1,7 @@
-From ed94f848ad8c14d3540ead91f26f25107755a963 Mon Sep 17 00:00:00 2001
+From 434ac56ee87bdeb448c492a1c782805e713d0193 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Fri, 9 May 2025 14:31:45 -0500
-Subject: [PATCH 3/6] remove software
+Subject: [PATCH 3/5] remove software
 
 ---
  Containerfile                                 | 11 ++-----
@@ -150,5 +150,5 @@ index 665b2597..00000000
 -com.obsproject.Studio.Plugin.Gstreamer
 -com.obsproject.Studio.Plugin.GStreamerVaapi
 -- 
-2.49.0
+2.49.0.windows.1
 

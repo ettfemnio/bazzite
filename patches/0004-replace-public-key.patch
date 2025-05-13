@@ -1,7 +1,7 @@
-From 2dfc42d06f3c1aa0130d40fc1e9fd27eca1045bb Mon Sep 17 00:00:00 2001
+From 9ab45b18a325f23281b69c20a61cc1640d26fbfd Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Fri, 9 May 2025 14:31:47 -0500
-Subject: [PATCH 4/6] replace public key
+Subject: [PATCH 4/5] replace public key
 
 ---
  cosign.pub | 4 ++--
@@ -19,5 +19,5 @@ index bd5b1927..acd2449e 100644
 +X84KDtGWLVyULe0JwsHQE7CYSDhwlzouM/Wq8GbN3ftnoMzWYpszrxBbwA==
  -----END PUBLIC KEY-----
 -- 
-2.49.0
+2.49.0.windows.1
 
