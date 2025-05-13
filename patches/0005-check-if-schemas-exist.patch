@@ -1,7 +1,7 @@
-From 3148bd8f712c6a3b03f8bc8befc6ff9671a4a717 Mon Sep 17 00:00:00 2001
+From b85785aa933bca298b28f78abaf9ab5ba75ce630 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Fri, 9 May 2025 14:31:52 -0500
-Subject: [PATCH 5/5] check if schemas exist
+Subject: [PATCH 5/6] check if schemas exist
 
 I don't know why this patch is necessary or if it still is, but things broke without it.
 ---
@@ -63,5 +63,5 @@ index 3f487353..71a6b1b0 100644
      glib-compile-schemas /usr/share/glib-2.0/schemas &>/dev/null && \
      rm -r /tmp/bazzite-schema-test && \
 -- 
-2.49.0.windows.1
+2.49.0
 
