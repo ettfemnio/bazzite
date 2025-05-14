@@ -1,7 +1,7 @@
 name: Build
 on:
   schedule:
-    - cron: "40 4 * * 1" # 4:40 utc monday
+    - cron: "40 4 * * *" # 04:40 utc every day
   push:
     branches:
       - master
