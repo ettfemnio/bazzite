@@ -1,0 +1,26 @@
+From 35b93aed36f73cfa1ec8aa7027afdad7515a7fa8 Mon Sep 17 00:00:00 2001
+From: Preston Petrie <preston159@users.noreply.github.com>
+Date: Mon, 19 May 2025 19:41:14 -0500
+Subject: [PATCH 6/6] Revert "chore: Hide toggle-updates by default"
+
+This reverts commit c8d8116198b0b2face0eeadd7741bbad95874f45.
+---
+ .../desktop/shared/usr/share/ublue-os/just/10-update.just       | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/system_files/desktop/shared/usr/share/ublue-os/just/10-update.just b/system_files/desktop/shared/usr/share/ublue-os/just/10-update.just
+index 30b0e4b0..be6b5a6d 100644
+--- a/system_files/desktop/shared/usr/share/ublue-os/just/10-update.just
++++ b/system_files/desktop/shared/usr/share/ublue-os/just/10-update.just
+@@ -12,7 +12,7 @@ update:
+     /usr/bin/topgrade --config /usr/share/ublue-os/topgrade.toml --keep
+ 
+ # Turn automatic updates on or off
+-_toggle-updates ACTION="prompt":
++toggle-updates ACTION="prompt":
+     #!/usr/bin/bash
+     source /usr/lib/ujust/ujust.sh
+     CURRENT_STATE="$(systemctl is-enabled uupd.timer)"
+-- 
+2.49.0
+

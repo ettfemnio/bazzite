@@ -1,7 +1,7 @@
-From 0eca7154c6b0b2322dd968c3801f7dd27257743f Mon Sep 17 00:00:00 2001
+From 5d95d2a735cd25731f8ef3434507f98598cb3eb1 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Fri, 9 May 2025 14:31:42 -0500
-Subject: [PATCH 2/5] add software
+Subject: [PATCH 2/6] add software
 
 ---
  Containerfile        | 11 ++++++++++-
@@ -10,10 +10,10 @@ Subject: [PATCH 2/5] add software
  create mode 100755 build_files/build.sh
 
 diff --git a/Containerfile b/Containerfile
-index da920501..d380bd83 100644
+index b39b83b1..610a166b 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -388,6 +388,15 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -389,6 +389,15 @@ RUN --mount=type=cache,dst=/var/cache \
      chmod +x /usr/bin/winetricks && \
      /ctx/cleanup
  
@@ -29,7 +29,7 @@ index da920501..d380bd83 100644
  # Configure KDE & GNOME
  RUN --mount=type=cache,dst=/var/cache \
      --mount=type=cache,dst=/var/log \
-@@ -423,7 +432,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -424,7 +433,7 @@ RUN --mount=type=cache,dst=/var/cache \
              plasma-welcome-fedora \
              plasma-browser-integration \
              kcharselect \
@@ -82,5 +82,5 @@ index 00000000..86227335
 +    wayvnc \
 +    lact
 -- 
-2.49.0.windows.1
+2.49.0
 
