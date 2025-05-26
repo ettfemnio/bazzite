@@ -1,4 +1,4 @@
-From 5d95d2a735cd25731f8ef3434507f98598cb3eb1 Mon Sep 17 00:00:00 2001
+From fb5bf9d67cc3a0cd4ff39e8ac537898a0e83a875 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Fri, 9 May 2025 14:31:42 -0500
 Subject: [PATCH 2/6] add software
@@ -10,11 +10,11 @@ Subject: [PATCH 2/6] add software
  create mode 100755 build_files/build.sh
 
 diff --git a/Containerfile b/Containerfile
-index b39b83b1..610a166b 100644
+index 1509f2f0..ee585f6f 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -389,6 +389,15 @@ RUN --mount=type=cache,dst=/var/cache \
-     chmod +x /usr/bin/winetricks && \
+@@ -399,6 +399,15 @@ RUN --mount=type=cache,dst=/var/cache \
+     chmod +x /usr/libexec/bazzite-yafti-launcher && \
      /ctx/cleanup
  
 +# my packages
@@ -29,7 +29,7 @@ index b39b83b1..610a166b 100644
  # Configure KDE & GNOME
  RUN --mount=type=cache,dst=/var/cache \
      --mount=type=cache,dst=/var/log \
-@@ -424,7 +433,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -434,7 +443,7 @@ RUN --mount=type=cache,dst=/var/cache \
              plasma-welcome-fedora \
              plasma-browser-integration \
              kcharselect \
