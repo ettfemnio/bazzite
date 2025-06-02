@@ -1,19 +1,19 @@
-From fb5bf9d67cc3a0cd4ff39e8ac537898a0e83a875 Mon Sep 17 00:00:00 2001
+From 74fc8acf8db7206a4dd0e40f33a4c70fb927c2ff Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
-Date: Fri, 9 May 2025 14:31:42 -0500
-Subject: [PATCH 2/6] add software
+Date: Mon, 2 Jun 2025 19:30:14 +0200
+Subject: [PATCH 7/7] add software
 
 ---
- Containerfile        | 11 ++++++++++-
+ Containerfile        |  9 +++++++++
  build_files/build.sh | 37 +++++++++++++++++++++++++++++++++++++
- 2 files changed, 47 insertions(+), 1 deletion(-)
+ 2 files changed, 46 insertions(+)
  create mode 100755 build_files/build.sh
 
 diff --git a/Containerfile b/Containerfile
-index 1509f2f0..ee585f6f 100644
+index da56ae64..3b9e1e00 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -399,6 +399,15 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -400,6 +400,15 @@ RUN --mount=type=cache,dst=/var/cache \
      chmod +x /usr/libexec/bazzite-yafti-launcher && \
      /ctx/cleanup
  
@@ -29,15 +29,6 @@ index 1509f2f0..ee585f6f 100644
  # Configure KDE & GNOME
  RUN --mount=type=cache,dst=/var/cache \
      --mount=type=cache,dst=/var/log \
-@@ -434,7 +443,7 @@ RUN --mount=type=cache,dst=/var/cache \
-             plasma-welcome-fedora \
-             plasma-browser-integration \
-             kcharselect \
--            konsole && \
-+            && \
-         sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:org.gnome.Ptyxis.desktop,applications:org.kde.discover.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
-         sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,net.lutris.Lutris.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.gnome.Ptyxis.desktop,org.kde.discover.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml && \
-         sed -i 's@\[Desktop Action new-window\]@\[Desktop Action new-window\]\nX-KDE-Shortcuts=Ctrl+Alt+T@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
 diff --git a/build_files/build.sh b/build_files/build.sh
 new file mode 100755
 index 00000000..86227335

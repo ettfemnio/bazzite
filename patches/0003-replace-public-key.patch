@@ -1,7 +1,7 @@
-From b8682bbd055a649b4a1fc68a06d2e19c921ce5dc Mon Sep 17 00:00:00 2001
+From a7eb2591c91bacd63bc7a1a9e670f6e4ee7d88cf Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Fri, 9 May 2025 14:31:47 -0500
-Subject: [PATCH 4/6] replace public key
+Subject: [PATCH 3/7] replace public key
 
 ---
  cosign.pub | 4 ++--
