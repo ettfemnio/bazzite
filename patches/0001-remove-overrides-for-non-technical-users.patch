@@ -1,18 +1,30 @@
-From 8cf67cc29f8bfa4fc76294ade24d40e3b98a4f53 Mon Sep 17 00:00:00 2001
+From 15a1732a86695bd9945d8c519dbf0c35ab3c64a1 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Fri, 9 May 2025 14:31:36 -0500
 Subject: [PATCH 1/7] remove overrides for non-technical users
 
 ---
- system_files/overrides/usr/bin/dnf | 9 ---------
- system_files/overrides/usr/bin/yum | 9 ---------
- 2 files changed, 18 deletions(-)
+ system_files/overrides/etc/profile.d/dnf-dummy.sh | 6 ------
+ system_files/overrides/usr/bin/dnf                | 9 ---------
+ 2 files changed, 15 deletions(-)
+ delete mode 100644 system_files/overrides/etc/profile.d/dnf-dummy.sh
  delete mode 100755 system_files/overrides/usr/bin/dnf
- delete mode 100755 system_files/overrides/usr/bin/yum
 
+diff --git a/system_files/overrides/etc/profile.d/dnf-dummy.sh b/system_files/overrides/etc/profile.d/dnf-dummy.sh
+deleted file mode 100644
+index f2a63318..00000000
+--- a/system_files/overrides/etc/profile.d/dnf-dummy.sh
++++ /dev/null
+@@ -1,6 +0,0 @@
+-if [[ $- == *i* ]]; then
+-    # /usr/bin/dnf is a dummy wrapper that opens docs
+-    alias pacman='/usr/bin/dnf'
+-    alias apt='/usr/bin/dnf'
+-    alias yum='/usr/bin/dnf'
+-fi
 diff --git a/system_files/overrides/usr/bin/dnf b/system_files/overrides/usr/bin/dnf
 deleted file mode 100755
-index cf78002a..00000000
+index 33b4b29d..00000000
 --- a/system_files/overrides/usr/bin/dnf
 +++ /dev/null
 @@ -1,9 +0,0 @@
@@ -24,22 +36,7 @@ index cf78002a..00000000
 -fi
 -
 -echo -e "ERROR: Fedora Atomic images utilize rpm-ostree instead (and is discouraged to use).\nPlease, \e]8;;https://docs.bazzite.gg/Installing_and_Managing_Software/\aread our documentation\e]8;;\a\n\e]8;;https://docs.bazzite.gg/Installing_and_Managing_Software/\ahttps://docs.bazzite.gg/Installing_and_Managing_Software/\e]8;;\a\n"
--exit 0
-diff --git a/system_files/overrides/usr/bin/yum b/system_files/overrides/usr/bin/yum
-deleted file mode 100755
-index 4e8bb5e4..00000000
---- a/system_files/overrides/usr/bin/yum
-+++ /dev/null
-@@ -1,9 +0,0 @@
--#!/usr/bin/bash
--#
--# Redirect to dnf5 if we are running inside a container
--if systemd-detect-virt -cq || { [[ -e /run/.containerenv || -e /.dockerenv ]]; }; then
--  exec dnf5 "$@"
--fi
--
--echo -e "ERROR: If you are reading this you have made a mistake and need to \e]8;;https://docs.bazzite.gg/Installing_and_Managing_Software/\aread our documentation\e]8;;\a\n\e]8;;https://docs.bazzite.gg/Installing_and_Managing_Software/\ahttps://docs.bazzite.gg/Installing_and_Managing_Software/\e]8;;\a\n"
--exit 0
+-${SUDO_USER:+sudo -u $SUDO_USER dbus-launch} bash -lc 'xdg-open "https://docs.bazzite.gg/Installing_and_Managing_Software"'
 -- 
 2.49.0
 

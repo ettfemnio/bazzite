@@ -1,26 +1,27 @@
-From fa536a2f1b4fe4b68237bfcdb98a666a7f62892c Mon Sep 17 00:00:00 2001
+From c9169a00b17eefe29489a42c63762e9f467dd0f6 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:29:59 +0200
 Subject: [PATCH 6/7] un-remove software
 
 ---
- Containerfile | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ Containerfile | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
 diff --git a/Containerfile b/Containerfile
-index 44684c3f..da56ae64 100644
+index a4af2415..adf6065f 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -229,7 +229,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -231,8 +231,7 @@ RUN --mount=type=cache,dst=/var/cache \
          ublue-os-update-services \
          firefox \
          firefox-langpacks \
 -        htop && \
+-    	dnf5 -y swap kde-partitionmanager gnome-disk-utility && \
 +        && \
      /ctx/cleanup
  
  # Install new packages
-@@ -435,7 +435,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -440,7 +439,7 @@ RUN --mount=type=cache,dst=/var/cache \
              plasma-welcome-fedora \
              plasma-browser-integration \
              kcharselect \

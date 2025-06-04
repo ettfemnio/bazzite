@@ -1,4 +1,4 @@
-From 74fc8acf8db7206a4dd0e40f33a4c70fb927c2ff Mon Sep 17 00:00:00 2001
+From a36e20fdf255f8b987ac6d3884e97a873f759136 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:30:14 +0200
 Subject: [PATCH 7/7] add software
@@ -10,11 +10,11 @@ Subject: [PATCH 7/7] add software
  create mode 100755 build_files/build.sh
 
 diff --git a/Containerfile b/Containerfile
-index da56ae64..3b9e1e00 100644
+index adf6065f..c59aa1e3 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -400,6 +400,15 @@ RUN --mount=type=cache,dst=/var/cache \
-     chmod +x /usr/libexec/bazzite-yafti-launcher && \
+@@ -404,6 +404,15 @@ RUN --mount=type=cache,dst=/var/cache \
+     chmod +x /usr/bin/ujust-picker && \
      /ctx/cleanup
  
 +# my packages
