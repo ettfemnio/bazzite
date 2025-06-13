@@ -1,0 +1,25 @@
+From b76a0ffbbbfba3674a5ad9b4e2c03cae02ced6da Mon Sep 17 00:00:00 2001
+From: Preston Petrie <preston159@users.noreply.github.com>
+Date: Fri, 13 Jun 2025 16:42:49 -0500
+Subject: [PATCH 8/8] update nvidia install script
+
+---
+ Containerfile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Containerfile b/Containerfile
+index c59aa1e3..44ee046c 100644
+--- a/Containerfile
++++ b/Containerfile
+@@ -920,7 +920,7 @@ RUN --mount=type=cache,dst=/var/cache \
+     dnf5 -y install \
+         mesa-vdpau-drivers.x86_64 \
+         mesa-vdpau-drivers.i686 && \
+-    curl -Lo /tmp/nvidia-install.sh https://raw.githubusercontent.com/ublue-os/main/525e900bf8b3327e3738574a54089acb963a4d3e/build_files/nvidia-install.sh && \
++    curl -Lo /tmp/nvidia-install.sh https://raw.githubusercontent.com/ublue-os/main/68e6d6653a8e95c8f15a2a48eb198f2ecef16210/build_files/nvidia-install.sh && \
+     chmod +x /tmp/nvidia-install.sh && \
+     IMAGE_NAME="${BASE_IMAGE_NAME}" /tmp/nvidia-install.sh && \
+     rm -f /usr/share/vulkan/icd.d/nouveau_icd.*.json && \
+-- 
+2.49.0
+

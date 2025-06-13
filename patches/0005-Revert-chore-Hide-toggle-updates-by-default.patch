@@ -1,7 +1,7 @@
-From be3992a055f4bb6b42353a9bdb36860df6a80113 Mon Sep 17 00:00:00 2001
+From 8df839f6ac2915734bc0d8664538fc09be8085f2 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 19 May 2025 19:41:14 -0500
-Subject: [PATCH 5/7] Revert "chore: Hide toggle-updates by default"
+Subject: [PATCH 5/8] Revert "chore: Hide toggle-updates by default"
 
 This reverts commit c8d8116198b0b2face0eeadd7741bbad95874f45.
 ---

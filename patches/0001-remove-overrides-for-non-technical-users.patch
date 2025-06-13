@@ -1,7 +1,7 @@
-From 15a1732a86695bd9945d8c519dbf0c35ab3c64a1 Mon Sep 17 00:00:00 2001
+From ec3050be8b62bc9d101793af3fe585ec51ff2433 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Fri, 9 May 2025 14:31:36 -0500
-Subject: [PATCH 1/7] remove overrides for non-technical users
+Subject: [PATCH 1/8] remove overrides for non-technical users
 
 ---
  system_files/overrides/etc/profile.d/dnf-dummy.sh | 6 ------
