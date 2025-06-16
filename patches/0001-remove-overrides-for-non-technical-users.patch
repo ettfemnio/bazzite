@@ -1,4 +1,4 @@
-From 15a1732a86695bd9945d8c519dbf0c35ab3c64a1 Mon Sep 17 00:00:00 2001
+From 3845857531ad9449b48569cf120369a02ccdbb1a Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Fri, 9 May 2025 14:31:36 -0500
 Subject: [PATCH 1/7] remove overrides for non-technical users
@@ -38,5 +38,5 @@ index 33b4b29d..00000000
 -echo -e "ERROR: Fedora Atomic images utilize rpm-ostree instead (and is discouraged to use).\nPlease, \e]8;;https://docs.bazzite.gg/Installing_and_Managing_Software/\aread our documentation\e]8;;\a\n\e]8;;https://docs.bazzite.gg/Installing_and_Managing_Software/\ahttps://docs.bazzite.gg/Installing_and_Managing_Software/\e]8;;\a\n"
 -${SUDO_USER:+sudo -u $SUDO_USER dbus-launch} bash -lc 'xdg-open "https://docs.bazzite.gg/Installing_and_Managing_Software"'
 -- 
-2.49.0
+2.49.0.windows.1
 

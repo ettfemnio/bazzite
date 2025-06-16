@@ -1,4 +1,4 @@
-From be3992a055f4bb6b42353a9bdb36860df6a80113 Mon Sep 17 00:00:00 2001
+From 5d480ac0461904f6b9d2d0c39c63e3dd63e3a4ae Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 19 May 2025 19:41:14 -0500
 Subject: [PATCH 5/7] Revert "chore: Hide toggle-updates by default"
@@ -22,5 +22,5 @@ index 30b0e4b0..be6b5a6d 100644
      source /usr/lib/ujust/ujust.sh
      CURRENT_STATE="$(systemctl is-enabled uupd.timer)"
 -- 
-2.49.0
+2.49.0.windows.1
 
