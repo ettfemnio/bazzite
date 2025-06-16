@@ -1,7 +1,7 @@
-From defc20071a4d30e3be5a96d4203a0ad542a8cb29 Mon Sep 17 00:00:00 2001
+From c9169a00b17eefe29489a42c63762e9f467dd0f6 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:29:59 +0200
-Subject: [PATCH 6/8] un-remove software
+Subject: [PATCH 6/7] un-remove software
 
 ---
  Containerfile | 5 ++---

@@ -1,7 +1,7 @@
-From 9089f979bdee4b380c824fbbd79549cda21c646f Mon Sep 17 00:00:00 2001
+From a36e20fdf255f8b987ac6d3884e97a873f759136 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:30:14 +0200
-Subject: [PATCH 7/8] add software
+Subject: [PATCH 7/7] add software
 
 ---
  Containerfile        |  9 +++++++++

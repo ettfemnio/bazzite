@@ -1,7 +1,7 @@
-From 216037eda39ab3a961e08b7d099d39d04c3f2654 Mon Sep 17 00:00:00 2001
+From a73c955925ba66827be418938cc1bfbc4e7dc22d Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Fri, 9 May 2025 14:31:52 -0500
-Subject: [PATCH 4/8] check if schemas exist
+Subject: [PATCH 4/7] check if schemas exist
 
 I don't know why this patch is necessary or if it still is, but things broke without it.
 ---
