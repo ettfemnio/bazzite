@@ -162,7 +162,13 @@ jobs:
       - name: Patch
         working-directory: ./bazzite
         run: |
+          if [[ compgen -G "../patches/pre${{ matrix.source_branch }}/*.patch" > /dev/null ]]; then
+              git apply ../patches/pre${{ matrix.source_branch }}/*.patch
+          fi
           git apply ../patches/*.patch
+          if [[ compgen -G "../patches/post${{ matrix.source_branch }}/*.patch" > /dev/null ]]; then
+              git apply ../patches/post${{ matrix.source_branch }}/*.patch
+          fi
 
       # Prepare offline documentation
       - name: Download offline docs
