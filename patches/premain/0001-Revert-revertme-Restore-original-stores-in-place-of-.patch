@@ -1,0 +1,75 @@
+From 8bf71af6f5bc651104d69ae2aa7d87ee6b59a8ef Mon Sep 17 00:00:00 2001
+From: Preston Petrie <preston159@users.noreply.github.com>
+Date: Wed, 18 Jun 2025 15:55:03 -0500
+Subject: [PATCH] Revert "revertme: Restore original stores in place of Bazaar
+ for stable release until testing completed."
+
+This reverts commit 5108ed4600c4f7613aed383ab888de04d24eb0af.
+---
+ Containerfile                                             | 8 +++++---
+ .../db/distro.d/00-bazzite-desktop-silverblue-global      | 2 +-
+ ...z0-01-bazzite-desktop-silverblue-dash.gschema.override | 2 +-
+ 3 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/Containerfile b/Containerfile
+index 86ad2b6a..f59a1717 100644
+--- a/Containerfile
++++ b/Containerfile
+@@ -240,6 +240,7 @@ RUN --mount=type=cache,dst=/var/cache \
+     --mount=type=bind,from=ctx,source=/,target=/ctx \
+     --mount=type=tmpfs,dst=/tmp \
+     dnf5 -y install \
++        bazaar \
+         iwd \
+         twitter-twemoji-fonts \
+         google-noto-sans-cjk-fonts \
+@@ -441,14 +442,14 @@ RUN --mount=type=cache,dst=/var/cache \
+             plasma-browser-integration \
+             kcharselect \
+             kde-partitionmanager \
++            discover \
+             konsole && \
+-        sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:org.gnome.Ptyxis.desktop,applications:org.kde.discover.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
+-        sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,net.lutris.Lutris.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.gnome.Ptyxis.desktop,org.kde.discover.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml && \
++        sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:org.gnome.Ptyxis.desktop,applications:io.github.kolunmi.bazaar.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
++        sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,net.lutris.Lutris.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.gnome.Ptyxis.desktop,io.github.kolunmi.bazaar.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml && \
+         sed -i 's@\[Desktop Action new-window\]@\[Desktop Action new-window\]\nX-KDE-Shortcuts=Ctrl+Alt+T@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
+         sed -i '/^Comment/d' /usr/share/applications/org.gnome.Ptyxis.desktop && \
+         sed -i 's@Exec=ptyxis@Exec=kde-ptyxis@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
+         sed -i 's@Keywords=@Keywords=konsole;console;@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
+-        sed -i 's/^Exec=plasma-discover/& --backends flatpak-backend/' /usr/share/applications/org.kde.discover.desktop && \
+         cp /usr/share/applications/org.gnome.Ptyxis.desktop /usr/share/kglobalaccel/org.gnome.Ptyxis.desktop && \
+         setcap 'cap_net_raw+ep' /usr/libexec/ksysguard/ksgrd_network_helper \
+     ; else \
+@@ -485,6 +486,7 @@ RUN --mount=type=cache,dst=/var/cache \
+             openssh-askpass \
+             firewall-config && \
+         dnf5 -y remove \
++            gnome-software \
+             gnome-classic-session \
+             gnome-tour \
+             gnome-extensions-app \
+diff --git a/system_files/desktop/silverblue/etc/dconf/db/distro.d/00-bazzite-desktop-silverblue-global b/system_files/desktop/silverblue/etc/dconf/db/distro.d/00-bazzite-desktop-silverblue-global
+index 399d345e..9e069c9b 100644
+--- a/system_files/desktop/silverblue/etc/dconf/db/distro.d/00-bazzite-desktop-silverblue-global
++++ b/system_files/desktop/silverblue/etc/dconf/db/distro.d/00-bazzite-desktop-silverblue-global
+@@ -10,7 +10,7 @@ hide-icon-shadow=false
+ menu-button-terminal='ptyxis --new-window'
+ menu-button-system-monitor='/usr/bin/missioncenter-helper'
+ menu-button-extensions-app='com.mattjakeman.ExtensionManager.desktop'
+-menu-button-software-center='gnome-software'
++menu-button-software-center='/usr/bin/bazaar window --auto-service'
+ show-activities-button=true
+ show-lockscreen=false
+ show-power-option=false
+diff --git a/system_files/desktop/silverblue/usr/share/glib-2.0/schemas/zz0-01-bazzite-desktop-silverblue-dash.gschema.override b/system_files/desktop/silverblue/usr/share/glib-2.0/schemas/zz0-01-bazzite-desktop-silverblue-dash.gschema.override
+index 12c2cacb..0773a60c 100644
+--- a/system_files/desktop/silverblue/usr/share/glib-2.0/schemas/zz0-01-bazzite-desktop-silverblue-dash.gschema.override
++++ b/system_files/desktop/silverblue/usr/share/glib-2.0/schemas/zz0-01-bazzite-desktop-silverblue-dash.gschema.override
+@@ -1,2 +1,2 @@
+ [org.gnome.shell] 
+-favorite-apps=['org.mozilla.firefox.desktop', 'steam.desktop', 'net.lutris.Lutris.desktop', 'org.gnome.Software.desktop', 'org.gnome.Ptyxis.desktop', 'org.gnome.Nautilus.desktop']
++favorite-apps=['org.mozilla.firefox.desktop', 'steam.desktop', 'net.lutris.Lutris.desktop', 'io.github.kolunmi.bazaar.desktop', 'org.gnome.Ptyxis.desktop', 'org.gnome.Nautilus.desktop']
+-- 
+2.50.0.windows.1
+
