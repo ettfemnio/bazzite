@@ -162,12 +162,14 @@ jobs:
       - name: Patch
         working-directory: ./bazzite
         run: |
+          git config user.name "GitHub Actions"
+          git config user.email "<>"
           if compgen -G "../patches/pre${{ matrix.source_branch }}/*.patch" > /dev/null; then
-              git apply ../patches/pre${{ matrix.source_branch }}/*.patch
+              git am -3 ../patches/pre${{ matrix.source_branch }}/*.patch
           fi
-          git apply ../patches/*.patch
+          git am -3 ../patches/*.patch
           if compgen -G "../patches/post${{ matrix.source_branch }}/*.patch" > /dev/null; then
-              git apply ../patches/post${{ matrix.source_branch }}/*.patch
+              git am -3 ../patches/post${{ matrix.source_branch }}/*.patch
           fi
 
       # Prepare offline documentation
