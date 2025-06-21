@@ -1,4 +1,4 @@
-From 843b16002cfe779a6a914e1b9a7d5a12773ce6a1 Mon Sep 17 00:00:00 2001
+From 86d8595147ac29bc0ca7bed9343177701ca146f9 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:26:36 +0200
 Subject: [PATCH 2/7] remove software
@@ -9,16 +9,14 @@ Subject: [PATCH 2/7] remove software
  .../desktop/kinoite/usr/bin/kde-ptyxis        | 11 -------
  .../applications/org.gnome.Prompt.desktop     | 29 -------------------
  ...te-desktop-kinoite-global.gschema.override | 12 --------
- .../share/ublue-os/bazzite/flatpak/install    | 18 ------------
- 6 files changed, 3 insertions(+), 79 deletions(-)
+ 5 files changed, 3 insertions(+), 61 deletions(-)
  delete mode 120000 system_files/desktop/kinoite/usr/bin/kde-prompt
  delete mode 100755 system_files/desktop/kinoite/usr/bin/kde-ptyxis
  delete mode 100644 system_files/desktop/kinoite/usr/share/applications/org.gnome.Prompt.desktop
  delete mode 100644 system_files/desktop/kinoite/usr/share/glib-2.0/schemas/zz0-00-bazzite-desktop-kinoite-global.gschema.override
- delete mode 100644 system_files/desktop/kinoite/usr/share/ublue-os/bazzite/flatpak/install
 
 diff --git a/Containerfile b/Containerfile
-index e74d0231..34ea6b4f 100644
+index 08e59c88..08d999c9 100644
 --- a/Containerfile
 +++ b/Containerfile
 @@ -424,7 +424,7 @@ RUN --mount=type=cache,dst=/var/cache \
@@ -30,7 +28,7 @@ index e74d0231..34ea6b4f 100644
          dnf5 -y swap \
          --repo=terra-extras \
              kf6-kio kf6-kio && \
-@@ -445,13 +445,8 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -444,13 +444,8 @@ RUN --mount=type=cache,dst=/var/cache \
              kde-partitionmanager \
              discover \
              konsole && \
@@ -124,30 +122,6 @@ index 04919260..00000000
 -default-rows=uint32 25
 -profile-uuids=['2871e8027773ae74d6c87a5f659bbc74']
 -default-profile-uuid='2871e8027773ae74d6c87a5f659bbc74'
-diff --git a/system_files/desktop/kinoite/usr/share/ublue-os/bazzite/flatpak/install b/system_files/desktop/kinoite/usr/share/ublue-os/bazzite/flatpak/install
-deleted file mode 100644
-index 665b2597..00000000
---- a/system_files/desktop/kinoite/usr/share/ublue-os/bazzite/flatpak/install
-+++ /dev/null
-@@ -1,18 +0,0 @@
--org.mozilla.firefox
--org.kde.gwenview
--org.kde.okular
--org.kde.kcalc
--org.kde.haruna
--org.kde.filelight
--io.github.fastrizwaan.WineZGUI
--com.ranfdev.DistroShelf
--it.mijorus.gearlever
--com.github.tchx84.Flatseal
--io.github.flattool.Warehouse
--net.davidotek.pupgui2
--org.freedesktop.Platform.VulkanLayer.MangoHud//23.08
--org.freedesktop.Platform.VulkanLayer.vkBasalt//23.08
--org.freedesktop.Platform.VulkanLayer.OBSVkCapture//23.08
--com.obsproject.Studio.Plugin.OBSVkCapture
--com.obsproject.Studio.Plugin.Gstreamer
--com.obsproject.Studio.Plugin.GStreamerVaapi
 -- 
 2.49.0
 
