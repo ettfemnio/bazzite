@@ -1,4 +1,4 @@
-From 86d8595147ac29bc0ca7bed9343177701ca146f9 Mon Sep 17 00:00:00 2001
+From 8122b6a1b4541cef47a45f457c92cd1402757717 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:26:36 +0200
 Subject: [PATCH 2/7] remove software
@@ -16,10 +16,10 @@ Subject: [PATCH 2/7] remove software
  delete mode 100644 system_files/desktop/kinoite/usr/share/glib-2.0/schemas/zz0-00-bazzite-desktop-kinoite-global.gschema.override
 
 diff --git a/Containerfile b/Containerfile
-index 08e59c88..08d999c9 100644
+index 63e835e1..5aa3469e 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -424,7 +424,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -423,7 +423,7 @@ RUN --mount=type=cache,dst=/var/cache \
              fcitx5-hangul \
              kcm-fcitx5 \
              gnome-disk-utility \
@@ -28,12 +28,12 @@ index 08e59c88..08d999c9 100644
          dnf5 -y swap \
          --repo=terra-extras \
              kf6-kio kf6-kio && \
-@@ -444,13 +444,8 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -443,13 +443,8 @@ RUN --mount=type=cache,dst=/var/cache \
+             kcharselect \
              kde-partitionmanager \
-             discover \
              konsole && \
--        sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:org.gnome.Ptyxis.desktop,applications:io.github.kolunmi.bazaar.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
--        sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,net.lutris.Lutris.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.gnome.Ptyxis.desktop,io.github.kolunmi.bazaar.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml && \
+-        sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:org.gnome.Ptyxis.desktop,applications:org.kde.discover.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
+-        sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,net.lutris.Lutris.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.gnome.Ptyxis.desktop,org.kde.discover.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml && \
 -        sed -i 's@\[Desktop Action new-window\]@\[Desktop Action new-window\]\nX-KDE-Shortcuts=Ctrl+Alt+T@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
 -        sed -i '/^Comment/d' /usr/share/applications/org.gnome.Ptyxis.desktop && \
 -        sed -i 's@Exec=ptyxis@Exec=kde-ptyxis@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \

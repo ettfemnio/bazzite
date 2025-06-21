@@ -1,14 +1,14 @@
-From 0868f6c1a3e5c78b6cbb8a6dd78824b84ca9f032 Mon Sep 17 00:00:00 2001
+From ca03325f17e50dfb3735bfcf5af3c42228ea8731 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:29:59 +0200
 Subject: [PATCH 6/7] un-remove software
 
 ---
- Containerfile | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ Containerfile | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
 diff --git a/Containerfile b/Containerfile
-index 82a98776..c759b00c 100644
+index e9582ba1..11793947 100644
 --- a/Containerfile
 +++ b/Containerfile
 @@ -231,7 +231,7 @@ RUN --mount=type=cache,dst=/var/cache \
@@ -20,12 +20,11 @@ index 82a98776..c759b00c 100644
      /ctx/cleanup
  
  # Install new packages
-@@ -441,9 +441,7 @@ RUN --mount=type=cache,dst=/var/cache \
-             plasma-welcome-fedora \
+@@ -441,8 +441,7 @@ RUN --mount=type=cache,dst=/var/cache \
              plasma-discover-kns \
+             plasma-browser-integration \
              kcharselect \
 -            kde-partitionmanager \
--            discover \
 -            konsole && \
 +            && \
          sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:io.github.kolunmi.bazaar.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
