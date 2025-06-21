@@ -1,4 +1,4 @@
-From 8bf71af6f5bc651104d69ae2aa7d87ee6b59a8ef Mon Sep 17 00:00:00 2001
+From d847f7579fb354017db840b2b6716d06b8dcb389 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Wed, 18 Jun 2025 15:55:03 -0500
 Subject: [PATCH] Revert "revertme: Restore original stores in place of Bazaar
@@ -6,13 +6,13 @@ Subject: [PATCH] Revert "revertme: Restore original stores in place of Bazaar
 
 This reverts commit 5108ed4600c4f7613aed383ab888de04d24eb0af.
 ---
- Containerfile                                             | 8 +++++---
- .../db/distro.d/00-bazzite-desktop-silverblue-global      | 2 +-
- ...z0-01-bazzite-desktop-silverblue-dash.gschema.override | 2 +-
- 3 files changed, 7 insertions(+), 5 deletions(-)
+ Containerfile                                              | 7 +++++--
+ .../dconf/db/distro.d/00-bazzite-desktop-silverblue-global | 2 +-
+ ...zz0-01-bazzite-desktop-silverblue-dash.gschema.override | 2 +-
+ 3 files changed, 7 insertions(+), 4 deletions(-)
 
 diff --git a/Containerfile b/Containerfile
-index 86ad2b6a..f59a1717 100644
+index 63e835e1..e74d0231 100644
 --- a/Containerfile
 +++ b/Containerfile
 @@ -240,6 +240,7 @@ RUN --mount=type=cache,dst=/var/cache \
@@ -23,7 +23,7 @@ index 86ad2b6a..f59a1717 100644
          iwd \
          twitter-twemoji-fonts \
          google-noto-sans-cjk-fonts \
-@@ -441,14 +442,14 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -442,9 +443,10 @@ RUN --mount=type=cache,dst=/var/cache \
              plasma-browser-integration \
              kcharselect \
              kde-partitionmanager \
@@ -36,12 +36,7 @@ index 86ad2b6a..f59a1717 100644
          sed -i 's@\[Desktop Action new-window\]@\[Desktop Action new-window\]\nX-KDE-Shortcuts=Ctrl+Alt+T@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
          sed -i '/^Comment/d' /usr/share/applications/org.gnome.Ptyxis.desktop && \
          sed -i 's@Exec=ptyxis@Exec=kde-ptyxis@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
-         sed -i 's@Keywords=@Keywords=konsole;console;@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
--        sed -i 's/^Exec=plasma-discover/& --backends flatpak-backend/' /usr/share/applications/org.kde.discover.desktop && \
-         cp /usr/share/applications/org.gnome.Ptyxis.desktop /usr/share/kglobalaccel/org.gnome.Ptyxis.desktop && \
-         setcap 'cap_net_raw+ep' /usr/libexec/ksysguard/ksgrd_network_helper \
-     ; else \
-@@ -485,6 +486,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -485,6 +487,7 @@ RUN --mount=type=cache,dst=/var/cache \
              openssh-askpass \
              firewall-config && \
          dnf5 -y remove \
@@ -71,5 +66,5 @@ index 12c2cacb..0773a60c 100644
 -favorite-apps=['org.mozilla.firefox.desktop', 'steam.desktop', 'net.lutris.Lutris.desktop', 'org.gnome.Software.desktop', 'org.gnome.Ptyxis.desktop', 'org.gnome.Nautilus.desktop']
 +favorite-apps=['org.mozilla.firefox.desktop', 'steam.desktop', 'net.lutris.Lutris.desktop', 'io.github.kolunmi.bazaar.desktop', 'org.gnome.Ptyxis.desktop', 'org.gnome.Nautilus.desktop']
 -- 
-2.50.0.windows.1
+2.49.0
 

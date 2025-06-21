@@ -1,4 +1,4 @@
-From 0e87dfa539c716a6254386fb9886d7634f58720f Mon Sep 17 00:00:00 2001
+From 4a445bdcac4818b80a74b8a0cad752f086327671 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Fri, 9 May 2025 14:31:52 -0500
 Subject: [PATCH 4/7] check if schemas exist
@@ -9,7 +9,7 @@ I don't know why this patch is necessary or if it still is, but things broke wit
  1 file changed, 15 insertions(+), 7 deletions(-)
 
 diff --git a/Containerfile b/Containerfile
-index 898a941a..a66732f7 100644
+index 34ea6b4f..50668823 100644
 --- a/Containerfile
 +++ b/Containerfile
 @@ -566,10 +566,12 @@ RUN --mount=type=cache,dst=/var/cache \
@@ -63,5 +63,5 @@ index 898a941a..a66732f7 100644
      glib-compile-schemas /usr/share/glib-2.0/schemas &>/dev/null && \
      rm -r /tmp/bazzite-schema-test && \
 -- 
-2.49.0.windows.1
+2.49.0
 

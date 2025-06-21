@@ -1,4 +1,4 @@
-From 42b3f8aeea5044b1a1cec8062f43c393466f6ae9 Mon Sep 17 00:00:00 2001
+From 843b16002cfe779a6a914e1b9a7d5a12773ce6a1 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:26:36 +0200
 Subject: [PATCH 2/7] remove software
@@ -18,10 +18,10 @@ Subject: [PATCH 2/7] remove software
  delete mode 100644 system_files/desktop/kinoite/usr/share/ublue-os/bazzite/flatpak/install
 
 diff --git a/Containerfile b/Containerfile
-index ff684ffd..898a941a 100644
+index e74d0231..34ea6b4f 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -425,7 +425,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -424,7 +424,7 @@ RUN --mount=type=cache,dst=/var/cache \
              fcitx5-hangul \
              kcm-fcitx5 \
              gnome-disk-utility \
@@ -149,5 +149,5 @@ index 665b2597..00000000
 -com.obsproject.Studio.Plugin.Gstreamer
 -com.obsproject.Studio.Plugin.GStreamerVaapi
 -- 
-2.49.0.windows.1
+2.49.0
 

@@ -1,4 +1,4 @@
-From b657f14cfeaa566b1ac036a2f9962cb21d03ae60 Mon Sep 17 00:00:00 2001
+From a72a6dd3c7afd541de2b779318282914a6cff019 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Wed, 18 Jun 2025 16:58:20 -0500
 Subject: [PATCH] Reapply "revertme: Restore original stores in place of Bazaar
@@ -12,7 +12,7 @@ This reverts commit 3d70486f3f372d6ad4e926cdefe33b71e4f8fe53.
  3 files changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/Containerfile b/Containerfile
-index 88b55673..c8a504c2 100644
+index f36c11f0..6c1cdb19 100644
 --- a/Containerfile
 +++ b/Containerfile
 @@ -240,7 +240,6 @@ RUN --mount=type=cache,dst=/var/cache \
@@ -23,7 +23,7 @@ index 88b55673..c8a504c2 100644
          iwd \
          twitter-twemoji-fonts \
          google-noto-sans-cjk-fonts \
-@@ -490,7 +489,6 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -489,7 +488,6 @@ RUN --mount=type=cache,dst=/var/cache \
              openssh-askpass \
              firewall-config && \
          dnf5 -y remove \

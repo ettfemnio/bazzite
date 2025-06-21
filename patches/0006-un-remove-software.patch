@@ -1,14 +1,14 @@
-From 545f2c151bcf88a0c8d430a31d28bd6d9b01f389 Mon Sep 17 00:00:00 2001
+From 0431897e37d2157ac05aba99daf05253d47803b4 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:29:59 +0200
 Subject: [PATCH 6/7] un-remove software
 
 ---
- Containerfile | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ Containerfile | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/Containerfile b/Containerfile
-index a66732f7..3aab77de 100644
+index 50668823..bc0d25ab 100644
 --- a/Containerfile
 +++ b/Containerfile
 @@ -231,7 +231,7 @@ RUN --mount=type=cache,dst=/var/cache \
@@ -20,15 +20,17 @@ index a66732f7..3aab77de 100644
      /ctx/cleanup
  
  # Install new packages
-@@ -444,7 +444,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -442,9 +442,7 @@ RUN --mount=type=cache,dst=/var/cache \
+             plasma-discover-kns \
+             plasma-browser-integration \
              kcharselect \
-             kde-partitionmanager \
-             discover \
+-            kde-partitionmanager \
+-            discover \
 -            konsole && \
 +            && \
          sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:io.github.kolunmi.bazaar.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
          sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,net.lutris.Lutris.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,io.github.kolunmi.bazaar.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml && \
          setcap 'cap_net_raw+ep' /usr/libexec/ksysguard/ksgrd_network_helper \
 -- 
-2.49.0.windows.1
+2.49.0
 
