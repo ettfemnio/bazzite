@@ -1,4 +1,4 @@
-From 8122b6a1b4541cef47a45f457c92cd1402757717 Mon Sep 17 00:00:00 2001
+From 516819664097898951738b378cfb601b4153b8bb Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:26:36 +0200
 Subject: [PATCH 2/7] remove software
@@ -16,7 +16,7 @@ Subject: [PATCH 2/7] remove software
  delete mode 100644 system_files/desktop/kinoite/usr/share/glib-2.0/schemas/zz0-00-bazzite-desktop-kinoite-global.gschema.override
 
 diff --git a/Containerfile b/Containerfile
-index 63e835e1..5aa3469e 100644
+index cbd2750d..ed925964 100644
 --- a/Containerfile
 +++ b/Containerfile
 @@ -423,7 +423,7 @@ RUN --mount=type=cache,dst=/var/cache \
@@ -28,7 +28,7 @@ index 63e835e1..5aa3469e 100644
          dnf5 -y swap \
          --repo=terra-extras \
              kf6-kio kf6-kio && \
-@@ -443,13 +443,8 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -442,13 +442,8 @@ RUN --mount=type=cache,dst=/var/cache \
              kcharselect \
              kde-partitionmanager \
              konsole && \
@@ -123,5 +123,5 @@ index 04919260..00000000
 -profile-uuids=['2871e8027773ae74d6c87a5f659bbc74']
 -default-profile-uuid='2871e8027773ae74d6c87a5f659bbc74'
 -- 
-2.49.0
+2.50.0
 

@@ -1,4 +1,4 @@
-From 9fb658ee5f129b43d2f757179ef23f6f1864ed45 Mon Sep 17 00:00:00 2001
+From 4c6c9bdfe880f1570ec54818162522a527638a66 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:30:14 +0200
 Subject: [PATCH 7/7] add software
@@ -10,7 +10,7 @@ Subject: [PATCH 7/7] add software
  create mode 100755 build_files/build.sh
 
 diff --git a/Containerfile b/Containerfile
-index 11793947..6c1cdb19 100644
+index 56f30a2b..f8d51080 100644
 --- a/Containerfile
 +++ b/Containerfile
 @@ -404,6 +404,15 @@ RUN --mount=type=cache,dst=/var/cache \
@@ -73,5 +73,5 @@ index 00000000..86227335
 +    wayvnc \
 +    lact
 -- 
-2.49.0
+2.50.0
 
