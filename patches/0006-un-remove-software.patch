@@ -1,17 +1,17 @@
-From cfee91c1f1fd34435310c16c30d023eb8d87a82f Mon Sep 17 00:00:00 2001
+From 2aecb3ce3296797b4f64cf8a2e5e9d80e639f57a Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:29:59 +0200
 Subject: [PATCH 6/7] un-remove software
 
 ---
- Containerfile | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ Containerfile | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/Containerfile b/Containerfile
-index ab912b6b..56f30a2b 100644
+index 60c3fd33..f006afae 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -231,7 +231,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -230,7 +230,7 @@ RUN --mount=type=cache,dst=/var/cache \
          ublue-os-update-services \
          firefox \
          firefox-langpacks \
@@ -20,11 +20,12 @@ index ab912b6b..56f30a2b 100644
      /ctx/cleanup
  
  # Install new packages
-@@ -440,8 +440,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -441,9 +441,7 @@ RUN --mount=type=cache,dst=/var/cache \
              plasma-welcome-fedora \
              plasma-discover-kns \
              kcharselect \
 -            kde-partitionmanager \
+-            discover \
 -            konsole && \
 +            && \
          sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:io.github.kolunmi.bazaar.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
