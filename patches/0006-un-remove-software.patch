@@ -1,4 +1,4 @@
-From 2aecb3ce3296797b4f64cf8a2e5e9d80e639f57a Mon Sep 17 00:00:00 2001
+From 00df57d0dfeaee6e35765a0f432e6c04082e4936 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:29:59 +0200
 Subject: [PATCH 6/7] un-remove software
@@ -8,7 +8,7 @@ Subject: [PATCH 6/7] un-remove software
  1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/Containerfile b/Containerfile
-index 60c3fd33..f006afae 100644
+index b2ec4b5b..3f5a937f 100644
 --- a/Containerfile
 +++ b/Containerfile
 @@ -230,7 +230,7 @@ RUN --mount=type=cache,dst=/var/cache \
@@ -25,7 +25,7 @@ index 60c3fd33..f006afae 100644
              plasma-discover-kns \
              kcharselect \
 -            kde-partitionmanager \
--            discover \
+-            plasma-discover \
 -            konsole && \
 +            && \
          sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:io.github.kolunmi.bazaar.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \

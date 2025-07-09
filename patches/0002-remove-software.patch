@@ -1,4 +1,4 @@
-From a3cab155b6e09835ecb1c87a17d95bfe14b5033a Mon Sep 17 00:00:00 2001
+From 514cf3f1bb7cc9bcfd4f9ba19771bd2881ca403a Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:26:36 +0200
 Subject: [PATCH 2/7] remove software
@@ -16,7 +16,7 @@ Subject: [PATCH 2/7] remove software
  delete mode 100644 system_files/desktop/kinoite/usr/share/glib-2.0/schemas/zz0-00-bazzite-desktop-kinoite-global.gschema.override
 
 diff --git a/Containerfile b/Containerfile
-index 56a48b6c..29879d74 100644
+index ee73091e..906ea916 100644
 --- a/Containerfile
 +++ b/Containerfile
 @@ -424,7 +424,7 @@ RUN --mount=type=cache,dst=/var/cache \
@@ -30,7 +30,7 @@ index 56a48b6c..29879d74 100644
              kf6-kio kf6-kio && \
 @@ -444,13 +444,8 @@ RUN --mount=type=cache,dst=/var/cache \
              kde-partitionmanager \
-             discover \
+             plasma-discover \
              konsole && \
 -        sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:org.gnome.Ptyxis.desktop,applications:io.github.kolunmi.Bazaar.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
 -        sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,net.lutris.Lutris.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.gnome.Ptyxis.desktop,io.github.kolunmi.Bazaar.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml && \
