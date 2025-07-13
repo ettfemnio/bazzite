@@ -1,4 +1,4 @@
-From 0b055aa678926eb0878b9e0c81e36a7ffa6000ad Mon Sep 17 00:00:00 2001
+From dceaa8e04fd36e1c1db511c42e4d0d0f32f00d4f Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Fri, 9 May 2025 14:31:52 -0500
 Subject: [PATCH 4/7] check if schemas exist
@@ -9,7 +9,7 @@ I don't know why this patch is necessary or if it still is, but things broke wit
  1 file changed, 15 insertions(+), 7 deletions(-)
 
 diff --git a/Containerfile b/Containerfile
-index 906ea916..b2ec4b5b 100644
+index 55a96437..82a851d3 100644
 --- a/Containerfile
 +++ b/Containerfile
 @@ -561,10 +561,12 @@ RUN --mount=type=cache,dst=/var/cache \
@@ -40,7 +40,7 @@ index 906ea916..b2ec4b5b 100644
      glib-compile-schemas --strict /tmp/bazzite-schema-test && \
      glib-compile-schemas /usr/share/glib-2.0/schemas &>/dev/null && \
      rm -r /tmp/bazzite-schema-test && \
-@@ -822,7 +826,9 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -825,7 +829,9 @@ RUN --mount=type=cache,dst=/var/cache \
      ; fi && \
      mkdir -p /tmp/bazzite-schema-test && \
      find "/usr/share/glib-2.0/schemas/" -type f ! -name "*.gschema.override" -exec cp {} "/tmp/bazzite-schema-test/" \; && \
@@ -51,7 +51,7 @@ index 906ea916..b2ec4b5b 100644
      glib-compile-schemas --strict /tmp/bazzite-schema-test && \
      glib-compile-schemas /usr/share/glib-2.0/schemas &>/dev/null && \
      rm -r /tmp/bazzite-schema-test && \
-@@ -928,7 +934,9 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -931,7 +937,9 @@ RUN --mount=type=cache,dst=/var/cache \
      ; fi && \
      mkdir -p /tmp/bazzite-schema-test && \
      find "/usr/share/glib-2.0/schemas/" -type f ! -name "*.gschema.override" -exec cp {} "/tmp/bazzite-schema-test/" \; && \
