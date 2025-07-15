@@ -1,4 +1,4 @@
-From 7c13a15b840f5362232a4d90cd6a0e25fd9f6f4c Mon Sep 17 00:00:00 2001
+From d3c7434fb91f592fb853225c8d640a50d72927f5 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:29:59 +0200
 Subject: [PATCH 6/7] un-remove software
@@ -8,7 +8,7 @@ Subject: [PATCH 6/7] un-remove software
  1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/Containerfile b/Containerfile
-index 82a851d3..cc22a33c 100644
+index 293a017e..74cea949 100644
 --- a/Containerfile
 +++ b/Containerfile
 @@ -230,7 +230,7 @@ RUN --mount=type=cache,dst=/var/cache \
@@ -20,7 +20,7 @@ index 82a851d3..cc22a33c 100644
      /ctx/cleanup
  
  # Install new packages
-@@ -441,9 +441,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -431,9 +431,7 @@ RUN --mount=type=cache,dst=/var/cache \
              plasma-welcome-fedora \
              plasma-discover-kns \
              kcharselect \
@@ -32,5 +32,5 @@ index 82a851d3..cc22a33c 100644
          sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,net.lutris.Lutris.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,io.github.kolunmi.bazaar.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml && \
          setcap 'cap_net_raw+ep' /usr/libexec/ksysguard/ksgrd_network_helper \
 -- 
-2.50.0
+2.43.0
 

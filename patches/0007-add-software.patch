@@ -1,4 +1,4 @@
-From 73eec42dc289024c9cc33dc3df9e71bea79fc388 Mon Sep 17 00:00:00 2001
+From 20cf5b7023e75c567a9f21d6b1231417dd08921f Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:30:14 +0200
 Subject: [PATCH 7/7] add software
@@ -10,10 +10,10 @@ Subject: [PATCH 7/7] add software
  create mode 100755 build_files/build.sh
 
 diff --git a/Containerfile b/Containerfile
-index cc22a33c..9c963f2c 100644
+index 74cea949..66db5728 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -404,6 +404,15 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -405,6 +405,15 @@ RUN --mount=type=cache,dst=/var/cache \
      chmod +x /usr/bin/ujust-picker && \
      /ctx/cleanup
  
@@ -73,5 +73,5 @@ index 00000000..86227335
 +    wayvnc \
 +    lact
 -- 
-2.50.0
+2.43.0
 
