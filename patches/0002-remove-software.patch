@@ -1,4 +1,4 @@
-From bc4fcc8fda10598db6e61b718a23cec3c3f47ac4 Mon Sep 17 00:00:00 2001
+From f26a9bae040fc39b4dbe8c9dd35d2d22e134ec9e Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:26:36 +0200
 Subject: [PATCH 2/7] remove software
@@ -16,10 +16,10 @@ Subject: [PATCH 2/7] remove software
  delete mode 100644 system_files/desktop/kinoite/usr/share/glib-2.0/schemas/zz0-00-bazzite-desktop-kinoite-global.gschema.override
 
 diff --git a/Containerfile b/Containerfile
-index 315dfd48..60836193 100644
+index c701bdff..0e18817e 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -425,7 +425,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -432,7 +432,7 @@ RUN --mount=type=cache,dst=/var/cache \
              kcm-fcitx5 \
              gnome-disk-utility \
              krunner-bazaar \
@@ -28,7 +28,7 @@ index 315dfd48..60836193 100644
          dnf5 -y remove \
              plasma-welcome \
              plasma-welcome-fedora \
-@@ -434,17 +434,9 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -441,17 +441,9 @@ RUN --mount=type=cache,dst=/var/cache \
              kde-partitionmanager \
              plasma-discover \
              konsole && \
