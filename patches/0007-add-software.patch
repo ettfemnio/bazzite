@@ -1,12 +1,12 @@
-From aed032e2c1709b5954957d4b61744483378f1122 Mon Sep 17 00:00:00 2001
+From 08e61c83e5c061b021279ec25d1c3fd765634d12 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:30:14 +0200
 Subject: [PATCH 7/7] add software
 
 ---
  Containerfile        |  9 +++++++++
- build_files/build.sh | 37 +++++++++++++++++++++++++++++++++++++
- 2 files changed, 46 insertions(+)
+ build_files/build.sh | 40 ++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 49 insertions(+)
  create mode 100755 build_files/build.sh
 
 diff --git a/Containerfile b/Containerfile
@@ -31,10 +31,10 @@ index 2d4c42c9..adda5c7b 100644
      --mount=type=cache,dst=/var/log \
 diff --git a/build_files/build.sh b/build_files/build.sh
 new file mode 100755
-index 00000000..86227335
+index 00000000..205857cf
 --- /dev/null
 +++ b/build_files/build.sh
-@@ -0,0 +1,37 @@
+@@ -0,0 +1,40 @@
 +#!/bin/bash
 +set -euxo pipefail
 +
@@ -67,6 +67,9 @@ index 00000000..86227335
 +dnf install -y zoxide
 +
 +# misc
++curl -L -o /tmp/modrinth.rpm "$(curl 'https://launcher-files.modrinth.com/updates.json?new' | jq -r '.platforms["linux-x86_64"].install_urls | map(select(endswith(".rpm"))) | .[0]')"
++dnf install -y /tmp/modrinth.rpm
++
 +dnf -y copr enable ilyaz/LACT
 +dnf install -y \
 +    waypipe \
