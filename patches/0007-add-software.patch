@@ -1,19 +1,17 @@
-From 08e61c83e5c061b021279ec25d1c3fd765634d12 Mon Sep 17 00:00:00 2001
+From f346351c641827783955a352ee92816152d252b0 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:30:14 +0200
 Subject: [PATCH 7/7] add software
 
 ---
- Containerfile        |  9 +++++++++
- build_files/build.sh | 40 ++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 49 insertions(+)
- create mode 100755 build_files/build.sh
+ Containerfile | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
 diff --git a/Containerfile b/Containerfile
-index 2d4c42c9..adda5c7b 100644
+index 9a28daaf..a540345e 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -411,6 +411,15 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -431,6 +431,15 @@ RUN --mount=type=cache,dst=/var/cache \
      chmod +x /usr/bin/ujust-picker && \
      /ctx/cleanup
  
@@ -29,52 +27,6 @@ index 2d4c42c9..adda5c7b 100644
  # Configure KDE & GNOME
  RUN --mount=type=cache,dst=/var/cache \
      --mount=type=cache,dst=/var/log \
-diff --git a/build_files/build.sh b/build_files/build.sh
-new file mode 100755
-index 00000000..205857cf
---- /dev/null
-+++ b/build_files/build.sh
-@@ -0,0 +1,40 @@
-+#!/bin/bash
-+set -euxo pipefail
-+
-+# install VirtualBox using script from bazzite-virtualbox
-+curl -L -o "/tmp/vbox.sh" "https://raw.githubusercontent.com/Preston159/bazzite-virtualbox/refs/heads/testing/build.sh"
-+chmod +x /tmp/vbox.sh
-+/tmp/vbox.sh
-+
-+# install hyprland
-+dnf -y copr enable solopasha/hyprland
-+dnf install -y hyprland
-+dnf install -y hyprland-qtutils
-+dnf install -y hyprlock
-+dnf install -y hyprland-uwsm
-+dnf install -y hyprpolkitagent
-+dnf install -y xdg-desktop-portal-hyprland
-+dnf install -y rofi
-+dnf install -y pavucontrol
-+dnf install -y waybar
-+dnf install --setopt=install_weak_deps=false -y waypaper
-+
-+# install development tools
-+curl -L -o /tmp/vscode-x64.rpm 'https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64'
-+dnf install -y /tmp/vscode-x64.rpm
-+dnf install -y docker-cli
-+dnf install -y kate
-+
-+# install cli tools
-+dnf install -y zsh
-+dnf install -y zoxide
-+
-+# misc
-+curl -L -o /tmp/modrinth.rpm "$(curl 'https://launcher-files.modrinth.com/updates.json?new' | jq -r '.platforms["linux-x86_64"].install_urls | map(select(endswith(".rpm"))) | .[0]')"
-+dnf install -y /tmp/modrinth.rpm
-+
-+dnf -y copr enable ilyaz/LACT
-+dnf install -y \
-+    waypipe \
-+    wayvnc \
-+    lact
 -- 
-2.43.0
+2.51.0
 
