@@ -1,4 +1,4 @@
-From eac419433ec40ffc04fac53d3d76495e4d7b793a Mon Sep 17 00:00:00 2001
+From e302f2f2e21cd6b5bad1e67019fe257cf318df60 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Fri, 9 May 2025 14:31:52 -0500
 Subject: [PATCH 4/7] check if schemas exist
@@ -9,10 +9,10 @@ I don't know why this patch is necessary or if it still is, but things broke wit
  1 file changed, 15 insertions(+), 7 deletions(-)
 
 diff --git a/Containerfile b/Containerfile
-index 9514e70a..7673e1bc 100644
+index 5ffe62b3..5a1a96d6 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -581,10 +581,12 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -582,10 +582,12 @@ RUN --mount=type=cache,dst=/var/cache \
      if grep -q "kinoite" <<< "${BASE_IMAGE_NAME}"; then \
        systemctl enable usr-share-sddm-themes.mount && \
        mkdir -p "/usr/share/ublue-os/dconfs/desktop-kinoite/" && \
@@ -29,7 +29,7 @@ index 9514e70a..7673e1bc 100644
      ; else \
        mkdir -p "/usr/share/ublue-os/dconfs/desktop-silverblue/" && \
        cp "/usr/share/glib-2.0/schemas/zz0-"*"-bazzite-desktop-silverblue-"*".gschema.override" "/usr/share/ublue-os/dconfs/desktop-silverblue/" && \
-@@ -595,7 +597,9 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -596,7 +598,9 @@ RUN --mount=type=cache,dst=/var/cache \
      ; fi && \
      mkdir -p /tmp/bazzite-schema-test && \
      find "/usr/share/glib-2.0/schemas/" -type f ! -name "*.gschema.override" -exec cp {} "/tmp/bazzite-schema-test/" \; && \
@@ -40,7 +40,7 @@ index 9514e70a..7673e1bc 100644
      glib-compile-schemas --strict /tmp/bazzite-schema-test && \
      glib-compile-schemas /usr/share/glib-2.0/schemas &>/dev/null && \
      rm -r /tmp/bazzite-schema-test && \
-@@ -847,7 +851,9 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -848,7 +852,9 @@ RUN --mount=type=cache,dst=/var/cache \
      ; fi && \
      mkdir -p /tmp/bazzite-schema-test && \
      find "/usr/share/glib-2.0/schemas/" -type f ! -name "*.gschema.override" -exec cp {} "/tmp/bazzite-schema-test/" \; && \
@@ -51,7 +51,7 @@ index 9514e70a..7673e1bc 100644
      glib-compile-schemas --strict /tmp/bazzite-schema-test && \
      glib-compile-schemas /usr/share/glib-2.0/schemas &>/dev/null && \
      rm -r /tmp/bazzite-schema-test && \
-@@ -956,7 +962,9 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -957,7 +963,9 @@ RUN --mount=type=cache,dst=/var/cache \
      ; fi && \
      mkdir -p /tmp/bazzite-schema-test && \
      find "/usr/share/glib-2.0/schemas/" -type f ! -name "*.gschema.override" -exec cp {} "/tmp/bazzite-schema-test/" \; && \

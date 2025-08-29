@@ -1,4 +1,4 @@
-From f346351c641827783955a352ee92816152d252b0 Mon Sep 17 00:00:00 2001
+From 6269a3f790e70db3e4e7517830b109fa61fe5cde Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:30:14 +0200
 Subject: [PATCH 7/7] add software
@@ -8,7 +8,7 @@ Subject: [PATCH 7/7] add software
  1 file changed, 9 insertions(+)
 
 diff --git a/Containerfile b/Containerfile
-index 9a28daaf..a540345e 100644
+index 8bbd1fa0..12f6f652 100644
 --- a/Containerfile
 +++ b/Containerfile
 @@ -431,6 +431,15 @@ RUN --mount=type=cache,dst=/var/cache \
