@@ -1,4 +1,4 @@
-From 23e4c46a496d5780e31f2712d56b4b0048920762 Mon Sep 17 00:00:00 2001
+From c33b7fd1871874b15e2e69905b2c6e7c71939176 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 19 May 2025 19:41:14 -0500
 Subject: [PATCH 5/7] Revert "chore: Hide toggle-updates by default"
@@ -9,10 +9,10 @@ This reverts commit c8d8116198b0b2face0eeadd7741bbad95874f45.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/system_files/desktop/shared/usr/share/ublue-os/just/10-update.just b/system_files/desktop/shared/usr/share/ublue-os/just/10-update.just
-index 30b0e4b0..be6b5a6d 100644
+index 63ac10dd..49e042f3 100644
 --- a/system_files/desktop/shared/usr/share/ublue-os/just/10-update.just
 +++ b/system_files/desktop/shared/usr/share/ublue-os/just/10-update.just
-@@ -12,7 +12,7 @@ update:
+@@ -13,7 +13,7 @@ update:
      /usr/bin/topgrade --config /usr/share/ublue-os/topgrade.toml --keep
  
  # Turn automatic updates on or off
