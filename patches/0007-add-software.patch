@@ -1,24 +1,25 @@
-From f7cbf92cc501174cdd5d6b0a2027160fcbaaa324 Mon Sep 17 00:00:00 2001
+From ea7e13f3d16dcfe9905344757ce79958fba92f12 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:30:14 +0200
 Subject: [PATCH 7/7] add software
 
 ---
- Containerfile | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ Containerfile | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
 diff --git a/Containerfile b/Containerfile
-index 3358a338..b14a1cc6 100644
+index 3358a338..abc15bdb 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -355,6 +355,15 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -355,6 +355,16 @@ RUN --mount=type=cache,dst=/var/cache \
      chmod +x /usr/bin/ujust-picker && \
      /ctx/cleanup
  
++COPY ./build_files/build.sh /ctx/
++
 +# my packages
 +RUN --mount=type=cache,dst=/var/cache \
 +    --mount=type=cache,dst=/var/log \
-+    --mount=type=bind,from=ctx,source=/,target=/ctx \
 +    --mount=type=tmpfs,dst=/tmp \
 +    mkdir -p /var/lib/alternatives && \
 +    /ctx/build.sh && \
