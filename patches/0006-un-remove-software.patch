@@ -1,4 +1,4 @@
-From 255e68f82e77cc62f24f758a82dbd07a7b5cfd66 Mon Sep 17 00:00:00 2001
+From b6ab1283223892a451cb2e4ccc95b1f734971ac2 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:29:59 +0200
 Subject: [PATCH 6/7] un-remove software
@@ -8,10 +8,10 @@ Subject: [PATCH 6/7] un-remove software
  1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/Containerfile b/Containerfile
-index 52b00d50..4b8c9803 100644
+index 9030e302..3358a338 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -249,7 +249,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -191,7 +191,7 @@ RUN --mount=type=cache,dst=/var/cache \
          firefox \
          firefox-langpacks \
          toolbox \
@@ -20,7 +20,7 @@ index 52b00d50..4b8c9803 100644
      /ctx/cleanup
  
  # Install new packages
-@@ -459,9 +459,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -380,9 +380,7 @@ RUN --mount=type=cache,dst=/var/cache \
              plasma-welcome-fedora \
              plasma-discover-kns \
              kcharselect \

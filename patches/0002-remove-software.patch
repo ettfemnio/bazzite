@@ -1,4 +1,4 @@
-From 48ee0a0895e304b82cff9ad80bf7016ed2997c67 Mon Sep 17 00:00:00 2001
+From 2af110f62c35546c9b93904d001140dd94fabe70 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:26:36 +0200
 Subject: [PATCH 2/7] remove software
@@ -16,10 +16,10 @@ Subject: [PATCH 2/7] remove software
  delete mode 100644 system_files/desktop/kinoite/usr/share/glib-2.0/schemas/zz0-00-bazzite-desktop-kinoite-global.gschema.override
 
 diff --git a/Containerfile b/Containerfile
-index 2af18483..e0ec1aab 100644
+index 170e887b..0dccf07d 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -453,7 +453,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -374,7 +374,7 @@ RUN --mount=type=cache,dst=/var/cache \
              gnome-disk-utility \
              kio-extras \
              krunner-bazaar \
@@ -28,7 +28,7 @@ index 2af18483..e0ec1aab 100644
          dnf5 -y remove \
              plasma-welcome \
              plasma-welcome-fedora \
-@@ -462,17 +462,9 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -383,17 +383,9 @@ RUN --mount=type=cache,dst=/var/cache \
              kde-partitionmanager \
              plasma-discover \
              konsole && \
@@ -47,8 +47,8 @@ index 2af18483..e0ec1aab 100644
 +        sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,net.lutris.Lutris.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,io.github.kolunmi.bazaar.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml && \
 +        setcap 'cap_net_raw+ep' /usr/libexec/ksysguard/ksgrd_network_helper \
      ; else \
-         dnf5 -y swap \
-         --repo terra-extras \
+         declare -A toswap=( \
+             ["copr:copr.fedorainfracloud.org:bazzite-org:bazzite-multilib"]="gsettings-desktop-schemas mutter" \
 diff --git a/system_files/desktop/kinoite/usr/bin/kde-prompt b/system_files/desktop/kinoite/usr/bin/kde-prompt
 deleted file mode 120000
 index d1546e48..00000000
