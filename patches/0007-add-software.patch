@@ -1,4 +1,4 @@
-From ea7e13f3d16dcfe9905344757ce79958fba92f12 Mon Sep 17 00:00:00 2001
+From 90dcd6856dd07da2146b104cd66104265b6bea1d Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:30:14 +0200
 Subject: [PATCH 7/7] add software
@@ -8,10 +8,10 @@ Subject: [PATCH 7/7] add software
  1 file changed, 10 insertions(+)
 
 diff --git a/Containerfile b/Containerfile
-index 3358a338..abc15bdb 100644
+index 23445c43..4b80a7ad 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -355,6 +355,16 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -356,6 +356,16 @@ RUN --mount=type=cache,dst=/var/cache \
      chmod +x /usr/bin/ujust-picker && \
      /ctx/cleanup
  
@@ -29,5 +29,5 @@ index 3358a338..abc15bdb 100644
  RUN --mount=type=cache,dst=/var/cache \
      --mount=type=cache,dst=/var/log \
 -- 
-2.51.0
+2.51.1
 

@@ -1,25 +1,25 @@
-From 2af110f62c35546c9b93904d001140dd94fabe70 Mon Sep 17 00:00:00 2001
+From 010508c39eceb1504c5fc43fc5978e84094dfeda Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:26:36 +0200
 Subject: [PATCH 2/7] remove software
 
 ---
- Containerfile                                 | 16 +++-------
+ Containerfile                                 |  8 ++++-
  .../desktop/kinoite/usr/bin/kde-prompt        |  1 -
  .../desktop/kinoite/usr/bin/kde-ptyxis        | 19 ------------
  .../applications/org.gnome.Prompt.desktop     | 29 -------------------
  ...te-desktop-kinoite-global.gschema.override | 12 --------
- 5 files changed, 4 insertions(+), 73 deletions(-)
+ 5 files changed, 7 insertions(+), 62 deletions(-)
  delete mode 120000 system_files/desktop/kinoite/usr/bin/kde-prompt
  delete mode 100755 system_files/desktop/kinoite/usr/bin/kde-ptyxis
  delete mode 100644 system_files/desktop/kinoite/usr/share/applications/org.gnome.Prompt.desktop
  delete mode 100644 system_files/desktop/kinoite/usr/share/glib-2.0/schemas/zz0-00-bazzite-desktop-kinoite-global.gschema.override
 
 diff --git a/Containerfile b/Containerfile
-index 170e887b..0dccf07d 100644
+index 7091f3f1..a19e914e 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -374,7 +374,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -375,7 +375,7 @@ RUN --mount=type=cache,dst=/var/cache \
              gnome-disk-utility \
              kio-extras \
              krunner-bazaar \
@@ -28,24 +28,23 @@ index 170e887b..0dccf07d 100644
          dnf5 -y remove \
              plasma-welcome \
              plasma-welcome-fedora \
-@@ -383,17 +383,9 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -384,6 +384,7 @@ RUN --mount=type=cache,dst=/var/cache \
              kde-partitionmanager \
              plasma-discover \
              konsole && \
--        sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:org.gnome.Ptyxis.desktop,applications:io.github.kolunmi.Bazaar.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
--        sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,net.lutris.Lutris.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,org.gnome.Ptyxis.desktop,io.github.kolunmi.Bazaar.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml && \
--        sed -i 's@\[Desktop Action new-window\]@\[Desktop Action new-window\]\nX-KDE-Shortcuts=Ctrl+Alt+T@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
--        sed -i '/^Comment/d' /usr/share/applications/org.gnome.Ptyxis.desktop && \
--        sed -i 's@Exec=ptyxis@Exec=kde-ptyxis@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
--        sed -i 's@Keywords=@Keywords=konsole;console;@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
--        cp /usr/share/applications/org.gnome.Ptyxis.desktop /usr/share/kglobalaccel/org.gnome.Ptyxis.desktop && \
--        setcap 'cap_net_raw+ep' /usr/libexec/ksysguard/ksgrd_network_helper && \
--        ln -sf /usr/share/wallpapers/convergence.jxl /usr/share/backgrounds/default.jxl && \
--        ln -sf /usr/share/wallpapers/convergence.jxl /usr/share/backgrounds/default-dark.jxl && \
--        rm -f /usr/share/backgrounds/default.xml \
++<<<<<<< HEAD
+         dnf5 -y install --allowerasing \
+             https://kojipkgs.fedoraproject.org/packages/kwin/6.5.1/2.fc43/x86_64/kwin-6.5.1-2.fc43.x86_64.rpm \
+             https://kojipkgs.fedoraproject.org/packages/kwin/6.5.1/2.fc43/x86_64/kwin-common-6.5.1-2.fc43.x86_64.rpm \
+@@ -402,6 +403,11 @@ RUN --mount=type=cache,dst=/var/cache \
+         ln -sf /usr/share/wallpapers/convergence.jxl /usr/share/backgrounds/default.jxl && \
+         ln -sf /usr/share/wallpapers/convergence.jxl /usr/share/backgrounds/default-dark.jxl && \
+         rm -f /usr/share/backgrounds/default.xml \
++=======
 +        sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:io.github.kolunmi.bazaar.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
 +        sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,net.lutris.Lutris.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,io.github.kolunmi.bazaar.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml && \
 +        setcap 'cap_net_raw+ep' /usr/libexec/ksysguard/ksgrd_network_helper \
++>>>>>>> remove software
      ; else \
          declare -A toswap=( \
              ["copr:copr.fedorainfracloud.org:bazzite-org:bazzite-multilib"]="gsettings-desktop-schemas mutter" \
@@ -136,5 +135,5 @@ index 04919260..00000000
 -profile-uuids=['2871e8027773ae74d6c87a5f659bbc74']
 -default-profile-uuid='2871e8027773ae74d6c87a5f659bbc74'
 -- 
-2.51.0
+2.51.1
 

@@ -1,17 +1,17 @@
-From b6ab1283223892a451cb2e4ccc95b1f734971ac2 Mon Sep 17 00:00:00 2001
+From e6c95b1a15ece52f28e2733b594d2a1e0a13ca39 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:29:59 +0200
 Subject: [PATCH 6/7] un-remove software
 
 ---
- Containerfile | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ Containerfile | 12 ++----------
+ 1 file changed, 2 insertions(+), 10 deletions(-)
 
 diff --git a/Containerfile b/Containerfile
-index 9030e302..3358a338 100644
+index bb83adab..23445c43 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -191,7 +191,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -192,7 +192,7 @@ RUN --mount=type=cache,dst=/var/cache \
          firefox \
          firefox-langpacks \
          toolbox \
@@ -20,17 +20,30 @@ index 9030e302..3358a338 100644
      /ctx/cleanup
  
  # Install new packages
-@@ -380,9 +380,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -381,10 +381,7 @@ RUN --mount=type=cache,dst=/var/cache \
              plasma-welcome-fedora \
              plasma-discover-kns \
              kcharselect \
 -            kde-partitionmanager \
 -            plasma-discover \
 -            konsole && \
+-<<<<<<< HEAD
 +            && \
-         sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:io.github.kolunmi.bazaar.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
-         sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,net.lutris.Lutris.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,io.github.kolunmi.bazaar.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml && \
-         setcap 'cap_net_raw+ep' /usr/libexec/ksysguard/ksgrd_network_helper \
+         dnf5 -y install --allowerasing \
+             https://kojipkgs.fedoraproject.org/packages/kwin/6.5.1/2.fc43/x86_64/kwin-6.5.1-2.fc43.x86_64.rpm \
+             https://kojipkgs.fedoraproject.org/packages/kwin/6.5.1/2.fc43/x86_64/kwin-common-6.5.1-2.fc43.x86_64.rpm \
+@@ -403,11 +400,6 @@ RUN --mount=type=cache,dst=/var/cache \
+         ln -sf /usr/share/wallpapers/convergence.jxl /usr/share/backgrounds/default.jxl && \
+         ln -sf /usr/share/wallpapers/convergence.jxl /usr/share/backgrounds/default-dark.jxl && \
+         rm -f /usr/share/backgrounds/default.xml \
+-=======
+-        sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:io.github.kolunmi.bazaar.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
+-        sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,steam.desktop,net.lutris.Lutris.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.kate.desktop,io.github.kolunmi.bazaar.desktop,system-update.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml && \
+-        setcap 'cap_net_raw+ep' /usr/libexec/ksysguard/ksgrd_network_helper \
+->>>>>>> remove software
+     ; else \
+         declare -A toswap=( \
+             ["copr:copr.fedorainfracloud.org:bazzite-org:bazzite-multilib"]="gsettings-desktop-schemas mutter" \
 -- 
-2.51.0
+2.51.1
 

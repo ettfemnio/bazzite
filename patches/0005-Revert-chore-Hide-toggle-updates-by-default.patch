@@ -1,4 +1,4 @@
-From d9b2c1a76381158cd3550af305747cd78f1de670 Mon Sep 17 00:00:00 2001
+From bd06cd0262859f162f1056db45800c7da6c41f7a Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 19 May 2025 19:41:14 -0500
 Subject: [PATCH 5/7] Revert "chore: Hide toggle-updates by default"
@@ -22,5 +22,5 @@ index 63ac10dd..49e042f3 100644
      source /usr/lib/ujust/ujust.sh
      CURRENT_STATE="$(systemctl is-enabled uupd.timer)"
 -- 
-2.51.0
+2.51.1
 
