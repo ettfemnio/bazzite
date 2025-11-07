@@ -6,18 +6,8 @@ curl -L -o "/tmp/vbox.sh" "https://raw.githubusercontent.com/Preston159/bazzite-
 chmod +x /tmp/vbox.sh
 /tmp/vbox.sh
 
-# install hyprland
-dnf -y copr enable solopasha/hyprland
-dnf install -y hyprland
-dnf install -y hyprland-qtutils
-dnf install -y hyprlock
-dnf install -y hyprland-uwsm
-dnf install -y hyprpolkitagent
-dnf install -y xdg-desktop-portal-hyprland
-dnf install -y rofi
-dnf install -y pavucontrol
-dnf install -y waybar
-dnf install --setopt=install_weak_deps=false -y waypaper
+# install cosmic
+dnf install -y cosmic-session
 
 # install development tools
 curl -L -o /tmp/vscode-x64.rpm 'https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64'
