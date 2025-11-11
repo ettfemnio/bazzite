@@ -1,22 +1,22 @@
-From 3ed567b739380b56dfd68c63404495ecf3167e3e Mon Sep 17 00:00:00 2001
+From 1d42de53879f5fab7ba695a767176752d5af8858 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:26:36 +0200
 Subject: [PATCH 2/7] remove software
 
 ---
- Containerfile                                 |  7 +----
+ Containerfile                                 |  8 +----
  .../desktop/kinoite/usr/bin/kde-prompt        |  1 -
  .../desktop/kinoite/usr/bin/kde-ptyxis        | 19 ------------
  .../applications/org.gnome.Prompt.desktop     | 29 -------------------
  ...te-desktop-kinoite-global.gschema.override | 12 --------
- 5 files changed, 1 insertion(+), 67 deletions(-)
+ 5 files changed, 1 insertion(+), 68 deletions(-)
  delete mode 120000 system_files/desktop/kinoite/usr/bin/kde-prompt
  delete mode 100755 system_files/desktop/kinoite/usr/bin/kde-ptyxis
  delete mode 100644 system_files/desktop/kinoite/usr/share/applications/org.gnome.Prompt.desktop
  delete mode 100644 system_files/desktop/kinoite/usr/share/glib-2.0/schemas/zz0-00-bazzite-desktop-kinoite-global.gschema.override
 
 diff --git a/Containerfile b/Containerfile
-index 7091f3f1..be6359fe 100644
+index 7091f3f1..5bf18208 100644
 --- a/Containerfile
 +++ b/Containerfile
 @@ -375,7 +375,7 @@ RUN --mount=type=cache,dst=/var/cache \
@@ -28,7 +28,7 @@ index 7091f3f1..be6359fe 100644
          dnf5 -y remove \
              plasma-welcome \
              plasma-welcome-fedora \
-@@ -392,11 +392,6 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -392,12 +392,6 @@ RUN --mount=type=cache,dst=/var/cache \
              kwin \
              kwin-common \
              kwin-libs && \
@@ -37,9 +37,10 @@ index 7091f3f1..be6359fe 100644
 -        sed -i '/^Comment/d' /usr/share/applications/org.gnome.Ptyxis.desktop && \
 -        sed -i 's@Exec=ptyxis@Exec=kde-ptyxis@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
 -        sed -i 's@Keywords=@Keywords=konsole;console;@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
-         cp /usr/share/applications/org.gnome.Ptyxis.desktop /usr/share/kglobalaccel/org.gnome.Ptyxis.desktop && \
+-        cp /usr/share/applications/org.gnome.Ptyxis.desktop /usr/share/kglobalaccel/org.gnome.Ptyxis.desktop && \
          setcap 'cap_net_raw+ep' /usr/libexec/ksysguard/ksgrd_network_helper && \
          ln -sf /usr/share/wallpapers/convergence.jxl /usr/share/backgrounds/default.jxl && \
+         ln -sf /usr/share/wallpapers/convergence.jxl /usr/share/backgrounds/default-dark.jxl && \
 diff --git a/system_files/desktop/kinoite/usr/bin/kde-prompt b/system_files/desktop/kinoite/usr/bin/kde-prompt
 deleted file mode 120000
 index d1546e48..00000000

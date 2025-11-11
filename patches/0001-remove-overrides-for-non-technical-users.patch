@@ -1,4 +1,4 @@
-From 229dfe9624d09ef10ecaa9533255eeed3291dcc3 Mon Sep 17 00:00:00 2001
+From 78db0c8fc741813510088b6647c06454b6745e21 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Fri, 9 May 2025 14:31:36 -0500
 Subject: [PATCH 1/7] remove overrides for non-technical users
