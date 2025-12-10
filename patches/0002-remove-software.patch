@@ -1,25 +1,25 @@
-From 1d42de53879f5fab7ba695a767176752d5af8858 Mon Sep 17 00:00:00 2001
+From 03701239b87e9b35bf693ba9a043b73b9a8b1776 Mon Sep 17 00:00:00 2001
 From: Preston Petrie <preston159@users.noreply.github.com>
 Date: Mon, 2 Jun 2025 19:26:36 +0200
 Subject: [PATCH 2/7] remove software
 
 ---
- Containerfile                                 |  8 +----
+ Containerfile                                 | 16 +++++-----
  .../desktop/kinoite/usr/bin/kde-prompt        |  1 -
  .../desktop/kinoite/usr/bin/kde-ptyxis        | 19 ------------
  .../applications/org.gnome.Prompt.desktop     | 29 -------------------
  ...te-desktop-kinoite-global.gschema.override | 12 --------
- 5 files changed, 1 insertion(+), 68 deletions(-)
+ 5 files changed, 9 insertions(+), 68 deletions(-)
  delete mode 120000 system_files/desktop/kinoite/usr/bin/kde-prompt
  delete mode 100755 system_files/desktop/kinoite/usr/bin/kde-ptyxis
  delete mode 100644 system_files/desktop/kinoite/usr/share/applications/org.gnome.Prompt.desktop
  delete mode 100644 system_files/desktop/kinoite/usr/share/glib-2.0/schemas/zz0-00-bazzite-desktop-kinoite-global.gschema.override
 
 diff --git a/Containerfile b/Containerfile
-index 7091f3f1..5bf18208 100644
+index 8ee9d6d6..ce3ba214 100644
 --- a/Containerfile
 +++ b/Containerfile
-@@ -375,7 +375,7 @@ RUN --mount=type=cache,dst=/var/cache \
+@@ -377,7 +377,7 @@ RUN --mount=type=cache,dst=/var/cache \
              gnome-disk-utility \
              kio-extras \
              krunner-bazaar \
@@ -28,16 +28,24 @@ index 7091f3f1..5bf18208 100644
          dnf5 -y remove \
              plasma-welcome \
              plasma-welcome-fedora \
-@@ -392,12 +392,6 @@ RUN --mount=type=cache,dst=/var/cache \
-             kwin \
-             kwin-common \
-             kwin-libs && \
+@@ -386,12 +386,14 @@ RUN --mount=type=cache,dst=/var/cache \
+             kde-partitionmanager \
+             plasma-discover \
+             konsole && \
 -        sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:org.gnome.Ptyxis.desktop,applications:io.github.kolunmi.Bazaar.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
 -        sed -i 's@\[Desktop Action new-window\]@\[Desktop Action new-window\]\nX-KDE-Shortcuts=Ctrl+Alt+T@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
 -        sed -i '/^Comment/d' /usr/share/applications/org.gnome.Ptyxis.desktop && \
 -        sed -i 's@Exec=ptyxis@Exec=kde-ptyxis@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
 -        sed -i 's@Keywords=@Keywords=konsole;console;@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \
 -        cp /usr/share/applications/org.gnome.Ptyxis.desktop /usr/share/kglobalaccel/org.gnome.Ptyxis.desktop && \
++        dnf5 -y install --allowerasing \
++            https://kojipkgs.fedoraproject.org/packages/kwin/6.5.1/2.fc43/x86_64/kwin-6.5.1-2.fc43.x86_64.rpm \
++            https://kojipkgs.fedoraproject.org/packages/kwin/6.5.1/2.fc43/x86_64/kwin-common-6.5.1-2.fc43.x86_64.rpm \
++            https://kojipkgs.fedoraproject.org/packages/kwin/6.5.1/2.fc43/x86_64/kwin-libs-6.5.1-2.fc43.x86_64.rpm && \
++        dnf5 versionlock add \
++            kwin \
++            kwin-common \
++            kwin-libs && \
          setcap 'cap_net_raw+ep' /usr/libexec/ksysguard/ksgrd_network_helper && \
          ln -sf /usr/share/wallpapers/convergence.jxl /usr/share/backgrounds/default.jxl && \
          ln -sf /usr/share/wallpapers/convergence.jxl /usr/share/backgrounds/default-dark.jxl && \
@@ -51,7 +59,7 @@ index d1546e48..00000000
 \ No newline at end of file
 diff --git a/system_files/desktop/kinoite/usr/bin/kde-ptyxis b/system_files/desktop/kinoite/usr/bin/kde-ptyxis
 deleted file mode 100755
-index fbac8de0..00000000
+index 70f2ab69..00000000
 --- a/system_files/desktop/kinoite/usr/bin/kde-ptyxis
 +++ /dev/null
 @@ -1,19 +0,0 @@
@@ -70,9 +78,9 @@ index fbac8de0..00000000
 -
 -# Dolphin integration requires --new-window to function properly
 -if [[ ! "${args[@]}" =~ "--" && ! "${args[@]}" =~ "-h" && ! "${args[@]}" =~ "-x" ]]; then
--        /usr/bin/ptyxis --new-window "${args[@]}"
+-        env GTK_IM_MODULE=ibus /usr/bin/ptyxis --new-window "${args[@]}"
 -else
--        /usr/bin/ptyxis "${args[@]}"
+-        env GTK_IM_MODULE=ibus /usr/bin/ptyxis "${args[@]}"
 -fi
 diff --git a/system_files/desktop/kinoite/usr/share/applications/org.gnome.Prompt.desktop b/system_files/desktop/kinoite/usr/share/applications/org.gnome.Prompt.desktop
 deleted file mode 100644
